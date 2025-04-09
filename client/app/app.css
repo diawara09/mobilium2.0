@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "tailwindcss";
+@plugin "flyonui";
+@plugin "flyonui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #bf7c51;
+  --color-secondary: #0e5899;
+}
+@plugin "@iconify/tailwind4";
+@import "../node_modules/flyonui/variants.css"; /* Require only if you want to use FlyonUI JS component */
+
+/* If you gitignored node_modules use below method */
+@source "../node_modules/flyonui/dist/index.js"; /* Require only if you want to use FlyonUI JS component */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html,
+body {
+  @apply bg-white dark:bg-gray-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
