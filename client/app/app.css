@@ -25,3 +25,6 @@ body {
     color-scheme: dark;
   }
 }
+.btn{
+  @apply rounded-none;
+}

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router'
 import logo from '../logo.png'
 
 export default function Navbar() {
@@ -35,13 +36,13 @@ export default function Navbar() {
             <div className="drawer-body">
               <ul className="menu rounded-none p-0 [&_li>*]:rounded-none">
                 <li>
-                  <a href="#">Home</a>
+                  <NavLink to="/">Accueil</NavLink>
                 </li>
                 <li>
-                  <a href="#">Account</a>
+                  <NavLink to="/login">Compte</NavLink>
                 </li>
                 <li>
-                  <a href="#">Notifications</a>
+                  <NavLink to="#">Produits</NavLink>
                 </li>
               </ul>
             </div>
