@@ -5,7 +5,7 @@ import Footer from '~/components/Footer'
 import { Outlet } from 'react-router'
 import { serverUrl } from '~/utils/serverUrl'
 import { UserContext } from '~/utils/contexts'
-
+import { useNavigation } from 'react-router'
 
 export async function clientLoader() {
   const req = await fetch(serverUrl + '/auth/login/status', {
@@ -24,11 +24,14 @@ export async function clientLoader() {
 }
 
 export default function Layout({ loaderData }: Route.ComponentProps) {
+  const navigation = useNavigation()
+  const isNavigating = Boolean(navigation.location)
   const user = loaderData
   return (
     <>
       <UserContext value={user}>
         <Navbar />
+        {isNavigating && <span className="loading text-accent loading-ring loading-xl"></span>}
         <Outlet />
         <Footer />
       </UserContext>

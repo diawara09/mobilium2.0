@@ -1,7 +1,9 @@
-import { NavLink } from 'react-router'
+import { Form, NavLink } from 'react-router'
 import logo from '../logo.png'
-
+import { useContext } from 'react'
+import { UserContext } from '~/utils/contexts'
 export default function Navbar() {
+    const user = useContext(UserContext)
     return (
       <nav className="navbar rounded-none justify-between gap-4 shadow-base-300/20 shadow-sm">
         <div className="navbar-start">
@@ -39,11 +41,25 @@ export default function Navbar() {
                   <NavLink to="/">Accueil</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/login">Compte</NavLink>
+                  <NavLink to={user ?"/admin" : "/login"}>Compte</NavLink>
                 </li>
                 <li>
                   <NavLink to="#">Produits</NavLink>
                 </li>
+                <>
+                  {user ? (
+                    <li>
+                      <Form method="post" action="/logout">
+                        <button className="btn btn-secondary">
+                          {' '}
+                          <span className="icon-[tabler--logout] size-8"></span>
+                        </button>
+                      </Form>
+                    </li>
+                  ) : (
+                    ''
+                  )}
+                </>
               </ul>
             </div>
           </div>
@@ -65,7 +81,9 @@ export default function Navbar() {
               aria-label="Notification Button"
             >
               <div className="indicator">
-                <span className="indicator-item badge badge-primary size-4 rounded-full">2</span>
+                <span className="indicator-item badge badge-primary size-4 rounded-full">
+                  2
+                </span>
                 <span className="icon-[tabler--shopping-cart-filled] text-base-content size-6"></span>
               </div>
             </button>
@@ -154,7 +172,9 @@ export default function Navbar() {
                     </div>
                   </div>
                   <div className="w-52 sm:w-60">
-                    <h6 className="truncate text-base">New message from Jane</h6>
+                    <h6 className="truncate text-base">
+                      New message from Jane
+                    </h6>
                     <small className="text-base-content/50 text-wrap">
                       Your have new message from Jane
                     </small>
