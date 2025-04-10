@@ -65,7 +65,7 @@ export default function Login() {
         : ''
     }, [fetcher])
     return (
-      <div className="w-full flex p-5 justify-center items-center">
+      <div className="w-full flex m-5 p-5 justify-center items-center">
         <fetcher.Form method="post" className="card rounded-none lg:min-w-96 sm:max-w-sm">
           <div className="card-body">
             <h5 className="card-title mb-0">Connectez-vous</h5>

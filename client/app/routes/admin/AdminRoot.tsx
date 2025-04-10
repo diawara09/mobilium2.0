@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
 
 export default function AdminRoot() {
     return (
@@ -23,14 +23,14 @@ export default function AdminRoot() {
               aria-labelledby="dropdown-end"
             >
               <li>
-                <a className="dropdown-item" href="#">
+                <NavLink className="dropdown-item" to="/admin/createCategory">
                   Ajouter une Categorie
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  Tous mes Categories
-                </a>
+                <NavLink className="dropdown-item" to={"/admin/allCategories"}>
+                  Toutes mes Categories
+                </NavLink>
               </li>
             </ul>
           </li>

@@ -2,7 +2,7 @@ import { serverUrl } from "~/utils/serverUrl";
 
 export async function clientLoader() {
     try {
-         const req = await fetch(serverUrl + '/admin/categoriy/primary', {
+         const req = await fetch(serverUrl + '/admin/category/primary', {
            method: 'GET',
            credentials: 'include',
            headers: {

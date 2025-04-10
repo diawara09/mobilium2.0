@@ -9,14 +9,17 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@base-ui-components/react": "^1.0.0-alpha.7",
     "@react-router/node": "^7.5.0",
     "@react-router/serve": "^7.5.0",
     "flyonui": "^2.1.0",
     "isbot": "^5.1.17",
     "react": "^19.0.0",
+    "react-data-table-component": "^7.7.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
-    "react-router": "^7.5.0"
+    "react-router": "^7.5.0",
+    "styled-components": "^6.1.17"
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.2.17",
