@@ -33,7 +33,7 @@ export default function AllProducts({ loaderData }: Route.ComponentProps) {
       },
       {
         name: 'Prix(CFA)',
-        selector: (row: any) => row.price,
+        selector: (row: any) => row.price.$numberDecimal,
       },
       {
         name: 'Qte',
@@ -46,7 +46,7 @@ export default function AllProducts({ loaderData }: Route.ComponentProps) {
       {
         name: 'Promo',
         selector: (row: any) =>
-          row.onSale ? row.onSale.discount_rate.toString() + '%' : '0%',
+          row.onSale ? row.onSale.discount_rate.$numberDecimal + '%' : '0%',
       },
       {
         name: 'Edit',

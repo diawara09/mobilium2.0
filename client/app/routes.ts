@@ -25,6 +25,8 @@ export default [
       // Product CRUD routes
       route('createProduct', './routes/admin/products/CreateProduct.tsx'),
       route('allProducts', './routes/admin/products/AllProducts.tsx'),
+      route('editProduct/:id', './routes/admin/products/EditProduct.tsx'),
+      route('deleteProduct/:id', './routes/admin/products/DeleteProduct.tsx')
     ]),
   ]),
 ] satisfies RouteConfig
