@@ -60,7 +60,7 @@ export default function AllCategories({ loaderData }: Route.ComponentProps) {
           >
             <button className="btn btn-error">
              
-                <span className="icon-[tabler--x] size-4"></span>
+              <span className="icon-[tabler--x] size-4"></span>
              
             </button>
           </Form>

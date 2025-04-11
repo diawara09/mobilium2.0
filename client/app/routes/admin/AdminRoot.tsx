@@ -86,9 +86,9 @@ export default function AdminRoot() {
               aria-labelledby="dropdown-end"
             >
               <li>
-                <a className="dropdown-item" href="#">
+                <NavLink className="dropdown-item" to="/admin/createProduct">
                   Ajouter un produit
-                </a>
+                </NavLink>
               </li>
               <li>
                 <a className="dropdown-item" href="#">
