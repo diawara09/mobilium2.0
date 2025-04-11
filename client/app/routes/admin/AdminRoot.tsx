@@ -91,9 +91,9 @@ export default function AdminRoot() {
                 </NavLink>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <NavLink className="dropdown-item" to="/admin/allProducts">
                   Tous mes produits
-                </a>
+                </NavLink>
               </li>
             </ul>
           </li>
