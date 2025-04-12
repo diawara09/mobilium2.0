@@ -26,7 +26,12 @@ export default [
       route('createProduct', './routes/admin/products/CreateProduct.tsx'),
       route('allProducts', './routes/admin/products/AllProducts.tsx'),
       route('editProduct/:id', './routes/admin/products/EditProduct.tsx'),
-      route('deleteProduct/:id', './routes/admin/products/DeleteProduct.tsx')
+      route('deleteProduct/:id', './routes/admin/products/DeleteProduct.tsx'),
+      // Sales CRUD Routes
+      route("createSale", "./routes/admin/sales/CreateSale.tsx"),
+      route("allSales", "./routes/admin/sales/AllSales.tsx"),
+      route('editSale/:id', "./routes/admin/sales/EditSale.tsx"),
+      route('deleteSale/:id', "./routes/admin/sales/deleteSale.tsx"),
     ]),
   ]),
 ] satisfies RouteConfig

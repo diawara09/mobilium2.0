@@ -44,7 +44,6 @@ export default function CreateProduct() {
            ? toast.error(fetcher.data.error, toastOptions)
            : toast.success(fetcher.data.msg, toastOptions)
          : ''
-       navigate('/admin/allProducts')
      }, [fetcher])
     return (
       <div className="w-full flex m-5 p-5 justify-center items-center">
@@ -53,103 +52,106 @@ export default function CreateProduct() {
           className="card rounded-none p-5 lg:min-w-96 sm:max-w-sm"
           encType="multipart/form-data"
         >
-          <div className="">
-            <span className="label-text">Name</span>
+          <div className="card-body">
+            <h5 className="card-title mb-0">Creer un Produit</h5>
+            <div className="text-base-content/50 mb-6"></div>
+            <div className="">
+              <span className="label-text">Nom(*)</span>
 
-            <input
-              type="text"
-              placeholder="Name"
-              className="input"
-              name="name"
-              required
-            />
-          </div>
-          <div>
-            <span className="label-text">Price</span>
+              <input
+                type="text"
+                placeholder="Name"
+                className="input"
+                name="name"
+                required
+              />
+            </div>
+            <div>
+              <span className="label-text">Prix(*)</span>
 
-            <input
-              type="number"
-              step=".01"
-              min="0"
-              placeholder="0.00"
-              className="input"
-              name="price"
-              required
-            />
-          </div>
-          <div>
-            <span className="label-text">Description</span>
+              <input
+                type="number"
+                step=".01"
+                min="0"
+                placeholder="0.00"
+                className="input"
+                name="price"
+                required
+              />
+            </div>
+            <div>
+              <span className="label-text">Description(*)</span>
 
-            <textarea
-              placeholder="Desc"
-              className="textarea textarea-lg w-full max-w-xs"
-              name="description"
-              required
-            ></textarea>
-          </div>
+              <textarea
+                placeholder="Desc"
+                className="textarea textarea-lg w-full max-w-xs"
+                name="description"
+                required
+              ></textarea>
+            </div>
 
-          <div>
-            <span className="label-text">Quantity</span>
+            <div>
+              <span className="label-text">Quantite(*)</span>
 
-            <input
-              type="number"
-              step="1"
-              min="0"
-              placeholder="0"
-              className="input"
-              name="qty"
-              required
-            />
-          </div>
-          <div className="form-control mb-5">
-            <span className="label-text">Images</span>
+              <input
+                type="number"
+                step="1"
+                min="0"
+                placeholder="0"
+                className="input"
+                name="qty"
+                required
+              />
+            </div>
+            <div className="form-control mb-5">
+              <span className="label-text">Images(*)</span>
 
-            <input
-              type="file"
-              className="input w-full max-w-xs"
-              name="images"
-              multiple
-              required
-            />
-          </div>
-          <div className="form-control mb-5">
-            <span className="label-text">Type</span>
+              <input
+                type="file"
+                className="input w-full max-w-xs"
+                name="images"
+                multiple
+                required
+              />
+            </div>
+            <div className="form-control mb-5">
+              <span className="label-text">Type</span>
 
-            <select
-              name="type"
-              onChange={(e) => setType(e.target.value)}
-              defaultValue="product"
-              className="select  w-full max-w-xs"
-            >
-              <option value="product" disabled>
-                Product
-              </option>
-              <option value="furniture">Furniture</option>
-              <option value="clothing">Clothing</option>
-            </select>
-          </div>
-          <ProductTypeSelector dValues={null} type={type} />
-          <AllCategorySelector defaultValue={null} name="category" />
-          <SalesSelector defaultValue={null} name="onSale" />
-          <div>
-            <span className="label-text">Additional Infos</span>
+              <select
+                name="type"
+                onChange={(e) => setType(e.target.value)}
+                defaultValue="product"
+                className="select  w-full max-w-xs"
+              >
+                <option value="product" disabled>
+                  Product
+                </option>
+                <option value="furniture">Fourniture</option>
+              </select>
+            </div>
+            <ProductTypeSelector dValues={null} type={type} />
+            <AllCategorySelector defaultValue={null} name="category" />
+            <SalesSelector defaultValue={null} name="onSale" />
+            <div>
+              <span className="label-text">Plus d'infos</span>
 
-            <textarea
-              placeholder="Desc"
-              className="textarea textarea-bordered textarea-lg w-full max-w-xs"
-              name="additional_info"
-            ></textarea>
-          </div>
-          <Toaster />
-          <div className="form-control mt-6">
-            <button className="btn btn-primary">
-              {' '}
-              {fetcher.state === 'submitting' ? (
-                <span className="loading loading-infinity loading-md"></span>
-              ) : (
-                'Creer'
-              )}
-            </button>
+              <textarea
+                placeholder="Desc"
+                className="textarea textarea-bordered textarea-lg w-full max-w-xs"
+                name="additional_info"
+              ></textarea>
+            </div>
+            <Toaster />
+            <div className="form-control mt-6">
+              <button className="btn btn-primary">
+                {' '}
+                {fetcher.state === 'submitting' ? (
+                  <span className="loading loading-infinity loading-md"></span>
+                ) : (
+                  'Creer'
+                )}
+              </button>
+            </div>
           </div>
         </fetcher.Form>
       </div>

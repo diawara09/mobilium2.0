@@ -28,7 +28,7 @@ export default function AdminRoot() {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="dropdown-item" to={"/admin/allCategories"}>
+                <NavLink className="dropdown-item" to={'/admin/allCategories'}>
                   Toutes mes Categories
                 </NavLink>
               </li>
@@ -53,14 +53,14 @@ export default function AdminRoot() {
               aria-labelledby="dropdown-end"
             >
               <li>
-                <a className="dropdown-item" href="#">
+                <NavLink className="dropdown-item" to="/admin/createSale">
                   Ajouter une promotion
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <NavLink className="dropdown-item" to="/admin/allSales">
                   Tous mes promotions
-                </a>
+                </NavLink>
               </li>
             </ul>
           </li>

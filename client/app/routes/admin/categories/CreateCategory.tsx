@@ -3,18 +3,22 @@ import toast, { Toaster } from "react-hot-toast"
 import PrimeCategoriesSelect from "~/components/category/PrimeCategoriesSelect"
 import { useEffect } from "react"
 import type { Route } from "./+types/CreateCategory"
+import { serverUrl } from '~/utils/serverUrl'
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
   const formData = await request.formData()
   const fileName = formData.get('image').name
-  let url, bodyForm 
+  let url
+  let bodyForm
   if (fileName === '') {
     const bodyObject = Object.fromEntries(formData)
+
     delete bodyObject.image
-    url = 'http://localhost:5500/admin/category'
+    url = serverUrl + '/admin/category/'
     bodyForm = JSON.stringify(bodyObject)
+    console.log(bodyForm)
   } else {
-    url = 'http://localhost:5500/admin/category/multer'
+    url = serverUrl + '/admin/category/multer'
     bodyForm = formData
   }
   console.log(bodyForm)

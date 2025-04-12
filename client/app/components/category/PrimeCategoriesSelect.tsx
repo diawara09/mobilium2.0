@@ -6,7 +6,7 @@ export default function PrimeCategoriesSelect({defaultValue, name}) {
 
     useEffect(() => {
          if (fetcher.state === 'idle' && !fetcher.data) {
-           fetcher.load('/loaders/category/allCategories')
+           fetcher.load('/loaders/allCategories')
          }
     }, [fetcher])
     

@@ -28,13 +28,13 @@ export default function Layout({ loaderData }: Route.ComponentProps) {
   const isNavigating = Boolean(navigation.location)
   const user = loaderData
   return (
-    <>
+    <div data-theme="light">
       <UserContext value={user}>
         <Navbar />
         {isNavigating && <span className="loading text-accent loading-ring loading-xl"></span>}
         <Outlet />
         <Footer />
       </UserContext>
-    </>
+    </div>
   ) 
 }

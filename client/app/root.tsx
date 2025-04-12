@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import ObserverProvider from "./components/ObserverProvider";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -83,7 +84,11 @@ export default function App() {
       }
     }, 100)
   }, [location.pathname])
-  return <Outlet />;
+  return (
+    <ObserverProvider>
+      <Outlet />
+    </ObserverProvider>
+  )
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
