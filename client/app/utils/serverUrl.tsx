@@ -1,1 +1,2 @@
-export const serverUrl= "http://localhost:5500"
+export const serverUrl= "https://api.mobilium.info"
+// a new repo
