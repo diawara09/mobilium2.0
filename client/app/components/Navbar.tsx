@@ -43,7 +43,7 @@ export default function Navbar() {
                   <NavLink to="/">Accueil</NavLink>
                 </li>
                 <li>
-                  <NavLink to={user ? '/admin' : '/login'}>Compte</NavLink>
+                  <NavLink to={user && user.id ? '/admin' : '/login'}>Compte</NavLink>
                 </li>
                 <li>
                   <NavLink to="/products">Produits</NavLink>
