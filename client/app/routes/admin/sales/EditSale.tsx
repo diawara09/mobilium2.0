@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from 'react-hot-toast'
 import { useFetcher } from "react-router";
 import { serverUrl } from "~/utils/serverUrl";
-import DatePicker from 'react-datepicker'
+import DatePicker from 'react-datepicker/dist/react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
