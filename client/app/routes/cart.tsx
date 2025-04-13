@@ -16,7 +16,7 @@ export default function Cart() {
         </div>
       </div>
 
-      <div className="w-full flex justify-center m-5 p-5 lg:m-10 lg:p-10 overflow-x-auto h-fit shadow-md">
+      <div className="max-w-full  m-5 p-5 lg:m-10 lg:p-10 overflow-x-auto h-fit shadow-md">
         <table className="table-borderless table">
           <thead>
             <tr>
