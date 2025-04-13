@@ -20,11 +20,14 @@
 
 html,
 body {
-  @apply bg-gray-50 dark:bg-gray-950;
+  @apply bg-gray-50 dark:bg-gray-950 ;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+body{
+  @apply max-w-screen overflow-hidden;
 }
 .btn, input, .menu,.input,textarea,select{
   @apply rounded-none ;
