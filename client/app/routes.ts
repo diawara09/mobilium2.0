@@ -2,9 +2,14 @@ import { type RouteConfig, index, layout, route } from "@react-router/dev/routes
 
 export default [
   layout('./routes/layout.tsx', [
+    //The main Page with the layout
     index('routes/home.tsx'),
+    // Auth routes
     route('login', './routes/login.tsx'),
     route('logout', './routes/logout.tsx'),
+
+    // Product
+    route("products", "./routes/products.tsx"),
 
     /* Loader Routes
         // category Loader*/
@@ -12,6 +17,9 @@ export default [
     route('loaders/allCategories', './loaders/category/getAll.tsx'),
     /* // Sales Loaders  */
     route('loaders/allSales', './loaders/sales/allSales.tsx'),
+
+    /* // product loaders    */
+    route("/loaders/allProducts", "./loaders/product/allProducts.tsx"),
 
     route('admin', './routes/admin/AdminRoot.tsx', [
       // Category CRUD routes

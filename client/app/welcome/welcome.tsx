@@ -266,7 +266,7 @@ export function Welcome() {
           data-carousel='{ "loadingClasses": "opacity-0", "dotsItemClasses": "carousel-dot carousel-active:bg-primary" }'
           className="relative w-full"
         >
-          <div className="carousel">
+          <div className="carousel rounded-none">
             <div className="carousel-body h-full opacity-0">
               <div className="carousel-slide">
                 <div className="bg-white flex flex-wrap  h-full justify-evenly p-6">
