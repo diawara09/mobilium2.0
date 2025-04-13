@@ -27,7 +27,7 @@ body {
   }
 }
 body{
-  @apply max-w-screen overflow-hidden;
+  @apply max-w-screen overflow-x-hidden;
 }
 .btn, input, .menu,.input,textarea,select{
   @apply rounded-none ;
