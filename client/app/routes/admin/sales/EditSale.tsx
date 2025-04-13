@@ -55,6 +55,7 @@ export default function EditSale({loaderData}:Route.ComponentProps) {
     const fetcher = useFetcher()
     const singleSale = loaderData
      const [startDate, setStartDate] = useState(singleSale.expires)
+     
      useEffect(() => {
        const toastOptions = {
          duration: 5000,
