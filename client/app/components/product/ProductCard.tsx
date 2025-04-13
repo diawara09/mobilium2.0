@@ -56,7 +56,7 @@ export default function ProductCard({ item }) {
             <li>
               <fetcher.Form
                 method="post"
-                action="/product/addToCart"
+                action="/addToCart"
                 className="w-full"
               >
                 <input type="hidden" value={item._id} name="itemId" />

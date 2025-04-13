@@ -1,7 +1,9 @@
-import { Form, NavLink } from 'react-router'
+import { Form, Link, NavLink } from 'react-router'
 import logo from '../logo.png'
 import { useContext } from 'react'
 import { UserContext } from '~/utils/contexts'
+import cartProduct from '../product7.webp'
+import CartDropdown from './cart/CartDropdown'
 export default function Navbar() {
     const user = useContext(UserContext)
     return (
@@ -41,7 +43,7 @@ export default function Navbar() {
                   <NavLink to="/">Accueil</NavLink>
                 </li>
                 <li>
-                  <NavLink to={user ?"/admin" : "/login"}>Compte</NavLink>
+                  <NavLink to={user ? '/admin' : '/login'}>Compte</NavLink>
                 </li>
                 <li>
                   <NavLink to="/products">Produits</NavLink>
@@ -73,138 +75,7 @@ export default function Navbar() {
           </a>
         </div>
         <div className="navbar-end items-center gap-4">
-          <div className="dropdown relative inline-flex">
-            <button
-              id="dropdown-scrollable"
-              type="button"
-              className="dropdown-toggle"
-              aria-label="Notification Button"
-            >
-              <div className="indicator">
-                <span className="indicator-item badge badge-primary size-4 rounded-full">
-                  2
-                </span>
-                <span className="icon-[tabler--shopping-cart-filled] text-base-content size-6"></span>
-              </div>
-            </button>
-            <div
-              className="dropdown-menu dropdown-open:opacity-100 hidden"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="dropdown-scrollable"
-            >
-              <div className="dropdown-header justify-center">
-                <h6 className="text-base text-base-content">Notification</h6>
-              </div>
-              <div className="overflow-y-auto text-base-content/80 max-h-52 max-sm:max-w-72">
-                <div className="dropdown-item">
-                  <div className="avatar avatar-away-bottom">
-                    <div className="w-10 rounded-full">
-                      <img
-                        src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png"
-                        alt="User Avatar"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-52 sm:w-60">
-                    <h6 className="truncate text-base">Charles Franklin</h6>
-                    <small className="text-base-content/50 truncate">
-                      Accepted your connection
-                    </small>
-                  </div>
-                </div>
-                <div className="dropdown-item">
-                  <div className="avatar">
-                    <div className="w-10 rounded-full">
-                      <img
-                        src="https://cdn.flyonui.com/fy-assets/avatar/avatar-2.png"
-                        alt="User Avatar"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-52 sm:w-60">
-                    <h6 className="!truncate text-base">
-                      Martian added moved Charts & Maps task to the done board.
-                    </h6>
-                    <small className="text-base-content/50 truncate">
-                      Today 10:00 AM
-                    </small>
-                  </div>
-                </div>
-                <div className="dropdown-item">
-                  <div className="avatar avatar-online-bottom">
-                    <div className="w-10 rounded-full">
-                      <img
-                        src="https://cdn.flyonui.com/fy-assets/avatar/avatar-8.png"
-                        alt="User Avatar"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-52 sm:w-60">
-                    <h6 className="truncate text-base">New Message</h6>
-                    <small className="text-base-content/50 truncate">
-                      You have new message from Natalie
-                    </small>
-                  </div>
-                </div>
-                <div className="dropdown-item">
-                  <div className="avatar avatar-placeholder">
-                    <div className="bg-neutral text-neutral-content w-10 rounded-full p-2">
-                      <span className="icon-[tabler--user] size-full"></span>
-                    </div>
-                  </div>
-                  <div className="w-52 sm:w-60">
-                    <h6 className="truncate text-base">
-                      Application has been approved 🚀
-                    </h6>
-                    <small className="text-base-content/50 text-wrap">
-                      Your ABC project application has been approved.
-                    </small>
-                  </div>
-                </div>
-                <div className="dropdown-item">
-                  <div className="avatar">
-                    <div className="w-10 rounded-full">
-                      <img
-                        src="https://cdn.flyonui.com/fy-assets/avatar/avatar-10.png"
-                        alt="User Avatar"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-52 sm:w-60">
-                    <h6 className="truncate text-base">
-                      New message from Jane
-                    </h6>
-                    <small className="text-base-content/50 text-wrap">
-                      Your have new message from Jane
-                    </small>
-                  </div>
-                </div>
-                <div className="dropdown-item">
-                  <div className="avatar">
-                    <div className="w-10 rounded-full">
-                      <img
-                        src="https://cdn.flyonui.com/fy-assets/avatar/avatar-3.png"
-                        alt="User Avatar"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-52 sm:w-60">
-                    <h6 className="truncate text-base">
-                      Barry Commented on App review task.
-                    </h6>
-                    <small className="text-base-content/50 truncate">
-                      Today 8:32 AM
-                    </small>
-                  </div>
-                </div>
-              </div>
-              <a href="#" className="dropdown-footer justify-center gap-1">
-                <span className="icon-[tabler--eye] size-4"></span>
-                View all
-              </a>
-            </div>
-          </div>
+          <CartDropdown/>
         </div>
       </nav>
     )

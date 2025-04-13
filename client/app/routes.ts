@@ -10,6 +10,10 @@ export default [
 
     // Product
     route("products", "./routes/products.tsx"),
+    
+    //cart
+    route("cart", "./routes/cart.tsx"),
+    route("addToCart", "./routes/addToCart.tsx"),
 
     /* Loader Routes
         // category Loader*/
@@ -20,6 +24,9 @@ export default [
 
     /* // product loaders    */
     route("/loaders/allProducts", "./loaders/product/allProducts.tsx"),
+
+    /* // user cart loader */
+    route("loaders/userCart", "./loaders/cart/userCart.tsx"),
 
     route('admin', './routes/admin/AdminRoot.tsx', [
       // Category CRUD routes
