@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from 'react-hot-toast'
 import { useFetcher } from "react-router";
 import { serverUrl } from "~/utils/serverUrl";
-
+import DatePicker from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
@@ -116,8 +116,8 @@ export default function EditSale({loaderData}:Route.ComponentProps) {
               <label className="label">
                 <span className="label-text">Date d'expiration(*)</span>
               </label>
-              <input type="date"
-                defaultValue={startDate}
+              <DatePicker
+                selected={startDate}
                 onChange={(date) => setStartDate(date)}
               />
               <input
