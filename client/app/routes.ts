@@ -17,6 +17,12 @@ export default [
     route("changeQty", "./routes/cart/changeQty.tsx"),
     route("deleteCartItem/:id", "./routes/cart/deleteItem.tsx"),
     route("addAddress","./routes/cart/addAddress.tsx"),
+
+    // checkout route
+    route("checkout/:address", "./routes/checkout.tsx", [
+      index("./routes/checkoutForm.tsx"),
+      route("complete", "./routes/completePage.tsx")
+    ]),
     
 
     /* Loader Routes
