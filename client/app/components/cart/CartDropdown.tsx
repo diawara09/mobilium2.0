@@ -56,7 +56,7 @@ export default function CartDropdown() {
                     <div className="w-42 sm:w-47 flex flex-col">
                       <h6 className="truncate text-base"> {item.name} </h6>
                       <small className="text-base-content/50 truncate">
-                        Prix: $
+                        Prix: 
                         {parseFloat(
                           item.price.$numberDecimal || item.price
                         ).toFixed()}{' '}

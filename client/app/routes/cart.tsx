@@ -1,7 +1,19 @@
-import { Link } from 'react-router'
+import { Link, useFetcher } from 'react-router'
 import banner from '../banner.jpg'
 import cartProduct from '../product7.webp'
+import { useEffect, useState } from 'react'
+import { serverUrl } from '~/utils/serverUrl'
 export default function Cart() {
+  const fetcher = useFetcher()
+  const [cart,setCart] = useState([])
+  useEffect(() => {
+    if (!fetcher.data && fetcher.state === 'idle') {
+      fetcher.load('/loaders/userCart')
+    } 
+      if (fetcher.data) {
+        setCart(fetcher.data)
+    }
+  },[fetcher.data])
   return (
     <>
       <div className="w-full max-h-72 overflow-hidden relative">
@@ -29,27 +41,22 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {cart.items && cart.items.length > 0 ? cart.items.map(item => <tr key={item.id}>
               <td>
                 {' '}
-                <img className="w-20" src={cartProduct} />
+                <img className="w-20" src={serverUrl + '/' + item.image} />
               </td>
               <td>
                 <div className="flex gap-2.5">
                   <div className="flex flex-col justify-center items-center">
-                    <h6 className="truncate text-base">Dummy Product Name</h6>
-                    <small className="text-base-content/50 truncate">
-                      Prix: 3000 FCFA
-                    </small>
-                    <small className="text-base-content/50 truncate">
-                      Qte: 2
-                    </small>
+                    <h6 className="truncate text-base"> {item.name} </h6>
+                   
                   </div>
                 </div>
               </td>
               <td>
                 {' '}
-                <span className="text-lg font-bold"> 5200 FCFA</span>{' '}
+                <span className="text-lg font-bold"> { item.price.$numberDecimal } FCFA</span>{' '}
               </td>
               <td>
                 <div className="flex items-center justify-center gap-2">
@@ -63,6 +70,7 @@ export default function Cart() {
                     min={1}
                     max={10}
                     step={1}
+                    defaultValue={item.qty}
                     className="input max-w-10"
                   />
                   <button className="btn btn-xs">
@@ -72,7 +80,7 @@ export default function Cart() {
                 </div>
               </td>
               <td>
-                <span className="text-lg font-bold"> 10400 FCFA</span>
+                <span className="text-lg font-bold"> { item.price.$numberDecimal * item.qty } FCFA</span>
               </td>
               <td>
                 <button
@@ -83,7 +91,8 @@ export default function Cart() {
                 </button>
                
               </td>
-            </tr>
+            </tr>) : ''}
+            
           </tbody>
         </table>
       </div>
