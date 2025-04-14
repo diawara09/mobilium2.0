@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useFetcher } from "react-router"
-import AddressCard from "./addressCard"
+import AddressCard from "./AddressCard"
 
 export default function AddressList(){
     const fetcher = useFetcher()
