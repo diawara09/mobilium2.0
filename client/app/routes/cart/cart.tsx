@@ -136,12 +136,24 @@ export default function Cart({loaderData}:Route.ComponentProps) {
                       </span>
                     </td>
                     <td>
-                      <button
-                        className="btn btn-circle btn-text btn-sm"
-                        aria-label="Action button"
+                    <fetcher.Form
+                        method="post"
+                        action={`/deleteCartItem/${cart._id}`}
                       >
-                        <span className="icon-[tabler--x] size-5"></span>
-                      </button>
+                        <input
+                          type="hidden"
+                          value={location.pathname}
+                          name="prevLocation"
+                        />
+                        <input type="hidden" value={item.id} name="itemId" />
+                        <button className="btn btn-sm btn-error" type="submit">
+                          {fetcher.state === 'submitting' ? (
+                            <span className="loading loading-infinity loading-md"></span>
+                          ) : (
+                            <span className="icon-[tabler--x] size-5"></span>
+                          )}
+                        </button>
+                      </fetcher.Form>
                     </td>
                   </tr>
                 ))

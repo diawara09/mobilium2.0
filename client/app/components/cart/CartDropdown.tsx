@@ -69,7 +69,7 @@ export default function CartDropdown() {
                     <div className="w-10 sm:w-5">
                       <fetcher.Form
                         method="post"
-                        action={`/product/deleteCartItem/${cart._id}`}
+                        action={`/deleteCartItem/${cart._id}`}
                       >
                         <input
                           type="hidden"

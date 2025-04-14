@@ -15,6 +15,7 @@ export default [
     route("cart", "./routes/cart/cart.tsx"),
     route("addToCart", "./routes/cart/addToCart.tsx"),
     route("changeQty", "./routes/cart/changeQty.tsx"),
+    route("deleteCartItem/:id", "./routes/cart/deleteItem.tsx"),
 
     /* Loader Routes
         // category Loader*/
