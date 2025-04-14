@@ -80,7 +80,7 @@ export default function Cart() {
                 </div>
               </td>
               <td>
-                <span className="text-lg font-bold"> { item.price.$numberDecimal * item.qty } FCFA</span>
+                <span className="text-lg font-bold"> {parseFloat(item.price.$numberDecimal) * parseFloat(item.qty) } FCFA</span>
               </td>
               <td>
                 <button
