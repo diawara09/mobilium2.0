@@ -56,7 +56,7 @@ export default function Cart() {
               </td>
               <td>
                 {' '}
-                <span className="text-lg font-bold"> { item.price.$numberDecimal } FCFA</span>{' '}
+                <span className="text-lg font-bold"> { item.price.$numberDecimal || item.price } FCFA</span>{' '}
               </td>
               <td>
                 <div className="flex items-center justify-center gap-2">
@@ -80,7 +80,7 @@ export default function Cart() {
                 </div>
               </td>
               <td>
-                <span className="text-lg font-bold"> {parseFloat(item.price.$numberDecimal) * parseFloat(item.qty) } FCFA</span>
+                <span className="text-lg font-bold"> {parseFloat(item.price.$numberDecimal||item.price) * parseFloat(item.qty) } FCFA</span>
               </td>
               <td>
                 <button
