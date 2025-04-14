@@ -32,6 +32,7 @@ export default function Cart({loaderData}:Route.ComponentProps) {
  
   return (
     <>
+    
       <div className="w-full max-h-72 overflow-hidden relative">
         <img src={banner} className="w-full" />
         <div className="flex justify-center w-full h-full items-center absolute top-0 backdrop-grayscale-100">
@@ -43,6 +44,7 @@ export default function Cart({loaderData}:Route.ComponentProps) {
           <Link to="/">Home</Link> / Panier
         </div>
       </div>
+
 
       <div className="max-w-full  m-5 p-5 lg:m-10 lg:p-10 overflow-x-auto h-fit shadow-md">
         <table className="table-borderless table">
@@ -94,12 +96,17 @@ export default function Cart({loaderData}:Route.ComponentProps) {
                           name="prevLocation"
                         />
                         <input type="hidden" value={cart._id} name="cartId" />
-                        <button type="button" className="btn btn-xs">
+                        <button type="button" onClick={(e)=> { 
+                          document.getElementById(`qtyId_${item.id}`).value > 1 ? document.getElementById(`qtyId_${item.id}`).value-- : '';
+                          fetcher.submit(e.currentTarget.form);
+                          } } className="btn btn-xs">
                           {" "}
-                          <span className="icon-[tabler--minus]  size-4 p-2"></span>
+                          {fetcher.state !== "idle" ? <span className="loading text-accent loading-ball loading-xl"></span>  :  <span className="icon-[tabler--minus] size-4 p-2"></span>}
+                         
                         </button>
 
                         <input
+                          id={`qtyId_${item.id}`}
                           className="input max-w-10"
                           type="number"
                           step={1}
@@ -111,9 +118,12 @@ export default function Cart({loaderData}:Route.ComponentProps) {
                             fetcher.submit(e.currentTarget.form);
                           }}
                         />
-                        <button type="button" className="btn btn-xs">
+                        <button type="button" onClick={(e)=> {
+                          document.getElementById(`qtyId_${item.id}`).value <= item.maxQty ? document.getElementById(`qtyId_${item.id}`).value++ : '';
+                          fetcher.submit(e.currentTarget.form);}} className="btn btn-xs">
                           {" "}
-                          <span className="icon-[tabler--plus] size-4 p-2"></span>
+                          {fetcher.state !== "idle" ? <span className="loading text-accent loading-ball loading-xl"></span>  :  <span className="icon-[tabler--plus] size-4 p-2"></span>}
+                         
                         </button>
                       </fetcher.Form>
                     </td>
