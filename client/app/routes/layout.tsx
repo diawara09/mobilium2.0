@@ -31,7 +31,7 @@ export default function Layout({ loaderData }: Route.ComponentProps) {
     <div data-theme="light">
       <UserContext value={user}>
         <Navbar />
-        {isNavigating && <span className="loading text-accent loading-ring loading-xl"></span>}
+        {isNavigating && <div className='w-full flex justify-center'><span className="loading text-accent loading-ring loading-xl"></span></div> }
         <Outlet />
         <Footer />
       </UserContext>
