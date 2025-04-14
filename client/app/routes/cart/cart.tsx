@@ -3,17 +3,33 @@ import banner from "../../banner.jpg";
 import cartProduct from "../../product7.webp";
 import { useEffect, useState } from "react";
 import { serverUrl } from "~/utils/serverUrl";
-export default function Cart() {
+import type { Route } from "./+types/cart";
+
+export async function clientLoader(){
+  try {
+     const guestSession = localStorage.getItem('user_id') || ''
+     const cartResponse = await fetch(
+       serverUrl + `/cart/?guest=${guestSession}`,
+       {
+         method: 'GET',
+         credentials: 'include',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+       }
+     )
+      const cart = await cartResponse.json()
+      console.log(cart);
+     return cart
+} catch (error) {
+  return {error}
+}
+}
+
+export default function Cart({loaderData}:Route.ComponentProps) {
   const fetcher = useFetcher();
-  const [cart, setCart] = useState([]);
-  useEffect(() => {
-    if (!fetcher.data && fetcher.state === "idle") {
-      fetcher.load("/loaders/userCart");
-    }
-    if (fetcher.data) {
-      setCart(fetcher.data);
-    }
-  }, [fetcher.data]);
+  const cart = loaderData;
+ 
   return (
     <>
       <div className="w-full max-h-72 overflow-hidden relative">
