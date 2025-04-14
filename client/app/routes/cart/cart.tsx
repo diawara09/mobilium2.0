@@ -4,6 +4,7 @@ import cartProduct from "../../product7.webp";
 import { useEffect, useState } from "react";
 import { serverUrl } from "~/utils/serverUrl";
 import type { Route } from "./+types/cart";
+import AddressList from "~/components/cart/AddressList";
 
 export async function clientLoader(){
   try {
@@ -148,7 +149,7 @@ export default function Cart({loaderData}:Route.ComponentProps) {
                         <input type="hidden" value={item.id} name="itemId" />
                         <button className="btn btn-sm btn-error" type="submit">
                           {fetcher.state === 'submitting' ? (
-                            <span className="loading loading-infinity loading-md"></span>
+                            <span className="loading loading-ball loading-md"></span>
                           ) : (
                             <span className="icon-[tabler--x] size-5"></span>
                           )}
@@ -179,6 +180,81 @@ export default function Cart({loaderData}:Route.ComponentProps) {
           </tbody>
         </table>
       </div>
+      <AddressList/>
+      <div className="divider lg:divider-horizontal">OR</div>
+      <div className="flex flex-col w-full justify-center items-center lg:flex-row p-5 ">
+      <div className="card w-full max-w-md shrink-0 shadow-2xl">
+      <fetcher.Form method="post" action="/addAdress" className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Nom de l&apos;adresse</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="text"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Adresse Complet</span>
+              </label>
+              <textarea
+                name="addressLines"
+                className="textarea textarea-bordered"
+                placeholder="Complete Address"
+              ></textarea>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Pays</span>
+              </label>
+              <input
+                type="text"
+                name="country"
+                placeholder="Country"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Ville</span>
+              </label>
+              <input
+                type="text"
+                name="city"
+                placeholder="city"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Zip Code</span>
+              </label>
+              <input
+                type="text"
+                name="zipCode"
+                placeholder="37150"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn btn-primary">
+                {fetcher.state === 'submitting' ? (
+                  <span className="loading loading-ball loading-md"></span>
+                ) : (
+                  'Créer'
+                )}
+              </button>
+            </div>
+          </fetcher.Form>
+          </div>
+          </div>
     </>
   );
 }

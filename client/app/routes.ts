@@ -16,6 +16,8 @@ export default [
     route("addToCart", "./routes/cart/addToCart.tsx"),
     route("changeQty", "./routes/cart/changeQty.tsx"),
     route("deleteCartItem/:id", "./routes/cart/deleteItem.tsx"),
+    route("addAddress","./routes/cart/addAddress.tsx"),
+    
 
     /* Loader Routes
         // category Loader*/
@@ -27,8 +29,9 @@ export default [
     /* // product loaders    */
     route("/loaders/allProducts", "./loaders/product/allProducts.tsx"),
 
-    /* // user cart loader */
+    /* // user cart loader and get all addresses */
     route("loaders/userCart", "./loaders/cart/userCart.tsx"),
+    route("loaders/allAddresses", "./loaders/cart/allAddresses.tsx"),
 
     route('admin', './routes/admin/AdminRoot.tsx', [
       // Category CRUD routes
