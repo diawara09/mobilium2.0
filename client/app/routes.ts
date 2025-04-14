@@ -12,8 +12,9 @@ export default [
     route("products", "./routes/products.tsx"),
     
     //cart
-    route("cart", "./routes/cart.tsx"),
-    route("addToCart", "./routes/addToCart.tsx"),
+    route("cart", "./routes/cart/cart.tsx"),
+    route("addToCart", "./routes/cart/addToCart.tsx"),
+    route("changeQty", "./routes/cart/changeQty.tsx"),
 
     /* Loader Routes
         // category Loader*/
