@@ -161,6 +161,24 @@ export default function Cart({loaderData}:Route.ComponentProps) {
           </tbody>
         </table>
       </div>
+      <div className="max-w-full  m-5 p-5 lg:m-10 lg:p-10 flex justify-end h-fit shadow-md">
+        <table className="max-w-sm table">
+          <tbody>
+            <tr>
+              <td>
+                <span className="font-semibold text-xl">Subtotal</span>
+              </td>
+              <td>
+              <span className="font-semibold text-xl">
+              {cart.items
+                ? parseFloat(cart.subtotal.$numberDecimal).toFixed(2)
+                : 0}{' '} FCFA
+            </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

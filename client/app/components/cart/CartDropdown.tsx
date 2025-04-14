@@ -90,6 +90,12 @@ export default function CartDropdown() {
                 ))
               : ''}
           </div>
+          <span className="font-semibold text-xl">
+              Subtotal: {'  '}
+              {cart.items
+                ? parseFloat(cart.subtotal.$numberDecimal).toFixed(2)
+                : 0}{' '} FCFA
+            </span>
           <Link to="/cart" className="dropdown-footer justify-center gap-1">
             <span className="icon-[tabler--eye] size-4"></span>
             Voir Plus
