@@ -75,7 +75,7 @@ export default function Navbar() {
           </a>
         </div>
         <div className="navbar-end items-center gap-4">
-          <CartDropdown/>
+          <CartDropdown user={user}/>
         </div>
       </nav>
     )

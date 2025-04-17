@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useFetcher } from 'react-router'
 import { serverUrl } from '~/utils/serverUrl'
 
-export default function CartDropdown() {
+export default function CartDropdown({user}) {
   const fetcher = useFetcher()
   const [cart, setCart] = useState([])
   useEffect(() => {
@@ -96,7 +96,7 @@ export default function CartDropdown() {
                 ? parseFloat(cart.subtotal.$numberDecimal).toFixed(2)
                 : 0}{' '} FCFA
             </span>
-          <Link to="/cart" className="dropdown-footer justify-center gap-1">
+          <Link  to={user && user.id ? '/cart' : '/login'}  className="dropdown-footer justify-center gap-1">
             <span className="icon-[tabler--eye] size-4"></span>
             Voir Plus
           </Link>
