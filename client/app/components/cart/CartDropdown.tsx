@@ -6,12 +6,12 @@ export default function CartDropdown({user}) {
   const fetcher = useFetcher()
   const [cart, setCart] = useState([])
   useEffect(() => {
-    if (!fetcher.data && fetcher.state === 'idle') {
+   
       fetcher.load('/loaders/userCart')
-    } 
-      if (fetcher.data) {
-        setCart(fetcher.data)
-    }
+      setCart(fetcher.data)
+
+      
+       
 
   }, [fetcher.data])
  

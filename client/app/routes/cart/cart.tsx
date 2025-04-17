@@ -1,4 +1,4 @@
-import { Link, useFetcher } from "react-router";
+import { Link, redirect, useFetcher } from "react-router";
 import banner from "../../banner.jpg";
 import cartProduct from "../../product7.webp";
 import { useEffect, useState } from "react";
@@ -30,6 +30,9 @@ export async function clientLoader() {
 export default function Cart({ loaderData }: Route.ComponentProps) {
   const fetcher = useFetcher();
   const cart = loaderData;
+  useEffect(()=>{
+    if(!cart.items || cart.items.length === 0) redirect("/products")
+  })
 
   return (
     <>
