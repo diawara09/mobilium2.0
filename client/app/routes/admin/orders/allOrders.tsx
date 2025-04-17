@@ -3,7 +3,7 @@ import DataTableBase from "~/components/DataTableBase";
 import type { Route } from "../+types/AdminRoot";
 import { UserContext } from "~/utils/contexts";
 import { useContext } from "react";
-import { Form, useFetcher, useNavigation, useSubmit } from "react-router";
+import { Form, useFetcher, useNavigation } from "react-router";
 export async function clientLoader() {
   try {
     const req = await fetch(serverUrl + "/orders/", {
@@ -22,7 +22,6 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
   const allOrders = loaderData;
   const user = useContext(UserContext)
   const navigation = useNavigation()
-  const submit = useSubmit()
   const columns = [
     {
       name: "ID",
@@ -102,7 +101,8 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
     },
     {
         name: "Proprietaire",
-        selector: (row:any) => row.user.email
+        selector: (row:any) => row.user.email,
+        sortable:true
     },
     {
         name: "Address",
@@ -110,16 +110,18 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
     },
     {
         name: "Date",
-        selector: (row:any) => row.updatedAt
+        selector: (row:any) => row.updatedAt,
+        sortable:true
     },
     {
         name: "Status",
         selector: (row: any) => {
-            return(<Form id={"stat_"+row._id} method="post" action={ `/admin/editOrderStatus/${row._id}`}>
-                <input type="text"  readOnly={!user.isAdmin} name="status" className="input" defaultValue={row.status} /> 
-                <button disabled={!user.isAdmin} className="btn btn-primary" >Changer</button>
+            return(<Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
+                <input type="text" readOnly={!user.isAdmin} name="status" className="input" defaultValue={row.status} /> 
+                <button  className={!user.isAdmin ? "hidden":  "btn btn-primary"} >Changer</button>
                 </Form>)
-        }
+        },
+        grow: 1
     },
     {
         name: "Total",
