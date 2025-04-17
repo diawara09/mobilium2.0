@@ -32,7 +32,7 @@ export default function Cart({ loaderData }: Route.ComponentProps) {
   const cart = loaderData;
   useEffect(()=>{
     if(!cart.items || cart.items.length === 0) redirect("/products")
-  })
+  },[cart])
 
   return (
     <>
