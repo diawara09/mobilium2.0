@@ -3,7 +3,7 @@ import DataTableBase from "~/components/DataTableBase";
 import type { Route } from "../+types/AdminRoot";
 export async function clientLoaader() {
   try {
-    const req = await fetch(serverUrl + "/", {
+    const req = await fetch(serverUrl + "/orders/", {
       method: "GET",
       mode: "cors",
       credentials: "include",
