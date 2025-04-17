@@ -94,6 +94,26 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
         );
       },
     },
+    {
+        name: "Proprietaire",
+        selector: (row:any) => row.user.email
+    },
+    {
+        name: "Address",
+        selector: (row:any) => row.address.addressLines
+    },
+    {
+        name: "Date",
+        selector: (row:any) => row.updatedAt
+    },
+    {
+        name: "Status",
+        selector: (row: any) => row.status
+    },
+    {
+        name: "Total",
+        selector: (row:any) => row.total
+    }
   ];
   return (<div className="flex flex-col m-5 p-5 max-w-full overflow-x-auto">
     <DataTableBase columns={columns} data={allOrders} selectableRows />
