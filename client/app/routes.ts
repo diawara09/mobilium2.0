@@ -59,7 +59,8 @@ export default [
       route('editSale/:id', "./routes/admin/sales/EditSale.tsx"),
       route('deleteSale/:id', "./routes/admin/sales/deleteSale.tsx"),
       // Orders
-      route("allOrders", "./routes/admin/orders/allOrders.tsx")
+      route("allOrders", "./routes/admin/orders/allOrders.tsx"),
+      route("editOrderStatus/:id", "./routes/admin/orders/editOrderStatus.tsx"),
     ]),
   ]),
 ] satisfies RouteConfig

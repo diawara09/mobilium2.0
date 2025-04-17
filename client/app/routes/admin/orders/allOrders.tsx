@@ -3,6 +3,7 @@ import DataTableBase from "~/components/DataTableBase";
 import type { Route } from "../+types/AdminRoot";
 import { UserContext } from "~/utils/contexts";
 import { useContext } from "react";
+import { useFetcher } from "react-router";
 export async function clientLoader() {
   try {
     const req = await fetch(serverUrl + "/orders/", {
@@ -20,6 +21,7 @@ export async function clientLoader() {
 export default function AllOrders({ loaderData }: Route.ComponentProps) {
   const allOrders = loaderData;
   const user = useContext(UserContext)
+  const fetcher = useFetcher()
   const columns = [
     {
       name: "ID",
@@ -111,7 +113,12 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
     },
     {
         name: "Status",
-        selector: (row: any) => row.status
+        selector: (row: any) => {
+            user.isAdmin ? <fetcher.Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
+                <input type="text" name="status" className="input" defaultValue={row.status} /> 
+                <button className="btn btn-info"> {fetcher.state === 'idle' ? 'Changer': <span className="loading loading-ball"></span>} </button>
+                </fetcher.Form> : row.status
+        }
     },
     {
         name: "Total",
