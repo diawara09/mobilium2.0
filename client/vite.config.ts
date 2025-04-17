@@ -8,4 +8,7 @@ export default defineConfig({
   ssr: {
     noExternal: ['react-datepicker'],
   },
+  optimizeDeps: {
+    include: ['apexcharts'],
+  },
 });
