@@ -3,7 +3,7 @@ import DataTableBase from "~/components/DataTableBase";
 import type { Route } from "../+types/AdminRoot";
 import { UserContext } from "~/utils/contexts";
 import { useContext } from "react";
-import { Form, useFetcher, useNavigation } from "react-router";
+import { Form, useFetcher, useNavigation, useSubmit } from "react-router";
 export async function clientLoader() {
   try {
     const req = await fetch(serverUrl + "/orders/", {
@@ -22,6 +22,7 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
   const allOrders = loaderData;
   const user = useContext(UserContext)
   const navigation = useNavigation()
+  const submit = useSubmit()
   const columns = [
     {
       name: "ID",
@@ -115,8 +116,8 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
         name: "Status",
         selector: (row: any) => {
             return(<Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
-                <input type="text" readOnly={!user.isAdmin} name="status" className="input" defaultValue={row.status} /> 
-                <button  className={user.isAdmin ?  "btn btn-primary":"hidden"} >Changer</button>
+                <input type="text"  readOnly={!user.isAdmin} name="status" className="input" defaultValue={row.status} /> 
+                <button aria-hidden={!user.isAdmin} disabled={!user.isAdmin} className="btn btn-primary" >Changer</button>
                 </Form>)
         }
     },
