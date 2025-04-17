@@ -65,7 +65,7 @@ export default function AdminRoot() {
             </ul>
           </li>
           <li>
-            <NavLink to={"/allOrders"} >Commandes</NavLink>
+            <NavLink to={"/admin/allOrders"} >Commandes</NavLink>
           </li>
           <li className="dropdown relative inline-flex [--auto-close:inside] [--offset:9] [--placement:bottom-end]">
             <button
