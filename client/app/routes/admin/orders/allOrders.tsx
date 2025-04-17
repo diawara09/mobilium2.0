@@ -1,6 +1,8 @@
 import { serverUrl } from "~/utils/serverUrl";
 import DataTableBase from "~/components/DataTableBase";
 import type { Route } from "../+types/AdminRoot";
+import { UserContext } from "~/utils/contexts";
+import { useContext } from "react";
 export async function clientLoader() {
   try {
     const req = await fetch(serverUrl + "/orders/", {
@@ -17,6 +19,7 @@ export async function clientLoader() {
 
 export default function AllOrders({ loaderData }: Route.ComponentProps) {
   const allOrders = loaderData;
+  const user = useContext(UserContext)
   const columns = [
     {
       name: "ID",
@@ -112,7 +115,7 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
     },
     {
         name: "Total",
-        selector: (row:any) => row.total
+        selector: (row:any) => row.total.$numberDecimal
     }
   ];
   return (<div className="flex flex-col m-5 p-5 max-w-full overflow-x-auto">
