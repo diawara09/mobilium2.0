@@ -1,7 +1,7 @@
 import { serverUrl } from "~/utils/serverUrl";
 import DataTableBase from "~/components/DataTableBase";
 import type { Route } from "../+types/AdminRoot";
-export async function clientLoaader() {
+export async function clientLoader() {
   try {
     const req = await fetch(serverUrl + "/orders/", {
       method: "GET",
