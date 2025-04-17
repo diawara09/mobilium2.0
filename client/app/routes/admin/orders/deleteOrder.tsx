@@ -7,7 +7,7 @@ export async function clientAction({ params }:Route.ClientActionArgs) {
     const { id } = params 
     try {
          const response = await fetch(
-           serverUrl + `/admin/orders/${id}`,
+           serverUrl + `/orders/${id}`,
            {
              method: 'DELETE',
              credentials: 'include',

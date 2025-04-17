@@ -115,9 +115,9 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
     {
         name: "Status",
         selector: (row: any) => {
-            return(<Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
+            return(<Form id={"stat_"+row._id} method="post" action={ `/admin/editOrderStatus/${row._id}`}>
                 <input type="text"  readOnly={!user.isAdmin} name="status" className="input" defaultValue={row.status} /> 
-                <button aria-hidden={!user.isAdmin} disabled={!user.isAdmin} className="btn btn-primary" >Changer</button>
+                <button disabled={!user.isAdmin} className="btn btn-primary" >Changer</button>
                 </Form>)
         }
     },
