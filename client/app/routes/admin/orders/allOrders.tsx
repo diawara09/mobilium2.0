@@ -114,10 +114,10 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
     {
         name: "Status",
         selector: (row: any) => {
-            user.isAdmin ? <fetcher.Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
+            user.isAdmin ? (<fetcher.Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
                 <input type="text" name="status" className="input" defaultValue={row.status} /> 
-                <button className="btn btn-info"> {fetcher.state === 'idle' ? 'Changer': <span className="loading loading-ball"></span>} </button>
-                </fetcher.Form> : row.status
+                <button className="btn btn-primary"> {fetcher.state === 'idle' ? 'Changer': <span className="loading loading-ball"></span>} </button>
+                </fetcher.Form>) : row.status
         }
     },
     {
