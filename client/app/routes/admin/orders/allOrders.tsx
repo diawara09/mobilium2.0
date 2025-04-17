@@ -114,16 +114,32 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
     {
         name: "Status",
         selector: (row: any) => {
-            user.isAdmin ? (<Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
-                <input type="text" name="status" className="input" defaultValue={row.status} /> 
-                <button className="btn btn-primary"> {navigation.status === 'idle' ? 'Changer': <span className="loading loading-ball"></span>} </button>
-                </Form>) : row.status
+            return(<Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
+                <input type="text" readOnly={!user.isAdmin} name="status" className="input" defaultValue={row.status} /> 
+                <button  className={user.isAdmin ? "hidden":  "btn btn-primary"} >Changer</button>
+                </Form>)
         }
     },
     {
         name: "Total",
         selector: (row:any) => row.total.$numberDecimal
-    }
+    },
+    {
+        name: 'Delete',
+        selector: (row: any) => (
+          <Form
+                method="post"
+                id={"delete_"+row._id}
+            action={`/admin/deleteOrder/${row._id}`}
+          >
+            <button className="btn btn-error">
+             
+              <span className="icon-[tabler--x] size-4"></span>
+             
+            </button>
+          </Form>
+        ),
+      },
   ];
   return (<div className="flex flex-col m-5 p-5 max-w-full overflow-x-auto">
     <DataTableBase columns={columns} data={allOrders} selectableRows />
