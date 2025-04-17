@@ -3,7 +3,7 @@ import DataTableBase from "~/components/DataTableBase";
 import type { Route } from "../+types/AdminRoot";
 import { UserContext } from "~/utils/contexts";
 import { useContext } from "react";
-import { useFetcher } from "react-router";
+import { Form, useFetcher, useNavigation } from "react-router";
 export async function clientLoader() {
   try {
     const req = await fetch(serverUrl + "/orders/", {
@@ -21,7 +21,7 @@ export async function clientLoader() {
 export default function AllOrders({ loaderData }: Route.ComponentProps) {
   const allOrders = loaderData;
   const user = useContext(UserContext)
-  const fetcher = useFetcher()
+  const navigation = useNavigation()
   const columns = [
     {
       name: "ID",
@@ -114,10 +114,10 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
     {
         name: "Status",
         selector: (row: any) => {
-            user.isAdmin ? (<fetcher.Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
+            user.isAdmin ? (<Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
                 <input type="text" name="status" className="input" defaultValue={row.status} /> 
-                <button className="btn btn-primary"> {fetcher.state === 'idle' ? 'Changer': <span className="loading loading-ball"></span>} </button>
-                </fetcher.Form>) : row.status
+                <button className="btn btn-primary"> {navigation.status === 'idle' ? 'Changer': <span className="loading loading-ball"></span>} </button>
+                </Form>) : row.status
         }
     },
     {
