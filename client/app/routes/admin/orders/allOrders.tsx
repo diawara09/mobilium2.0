@@ -117,7 +117,7 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
         name: "Status",
         selector: (row: any) => {
             return(<Form method="post" action={ `/admin/editOrderStatus/${row._id}`}>
-                <input type="text" readOnly={!user.isAdmin} name="status" className="input max-w-14 " defaultValue={row.status} /> 
+                <input type="text" readOnly={!user.isAdmin} name="status" className="input max-w-28 " defaultValue={row.status} /> 
                 <button  className={!user.isAdmin ? "hidden":  "btn btn-primary"} >Changer</button>
                 </Form>)
         },
