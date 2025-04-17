@@ -4,7 +4,7 @@ import { redirect } from "react-router";
 
 export async function clientAction({request, params}:Route.ClientActionArgs){
     const {id} = params 
-    const formData = request.formData()
+    const formData = await request.formData()
 
     try {
         const req = await fetch(serverUrl + `/orders/${id}`, {
