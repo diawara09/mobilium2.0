@@ -121,7 +121,8 @@ export default function AllOrders({ loaderData }: Route.ComponentProps) {
                 <button  className={!user.isAdmin ? "hidden":  "btn btn-primary"} >Changer</button>
                 </Form>)
         },
-        grow: 2
+        grow: 2,
+        minWidth: "150px"
     },
     {
         name: "Total",
