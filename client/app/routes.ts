@@ -10,6 +10,7 @@ export default [
 
     // Product
     route("products", "./routes/products.tsx"),
+    route("singleProduct/:id", "./routes/singleProduct.tsx"),
     
     //cart
     route("cart", "./routes/cart/cart.tsx"),
