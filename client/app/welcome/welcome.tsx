@@ -17,7 +17,7 @@ export function Welcome() {
       setFeatured(fetcher.data);
       console.log(featured);
     }
-  });
+  },[fetcher.data]);
   return (
     <>
       <div
