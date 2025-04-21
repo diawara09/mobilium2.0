@@ -122,7 +122,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
             <fetcher.Form
               method="post"
               action={"/addToCart"}
-              className="flex max-w-8/10 mx-auto"
+              className="flex max-w-8/10"
             >
               <input type="hidden" value={product._id} name="itemId" />
               <input
@@ -162,9 +162,9 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
               <button
                 type="button"
                 onClick={(e) => {
-                  document.querySelector(`#qtyId_${item.id}`).value <=
+                  document.querySelector(`#qtyId_${product._id}`).value <=
                   product.qty
-                    ? document.querySelector(`#qtyId_${item.id}`).value++
+                    ? document.querySelector(`#qtyId_${product._id}`).value++
                     : "";
                  
                 }}
