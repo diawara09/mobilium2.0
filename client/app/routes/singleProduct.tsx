@@ -162,9 +162,9 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
               <button
                 type="button"
                 onClick={(e) => {
-                  document.querySelector(`#qtyId_${item.id}`).value <=
+                  document.querySelector(`#qtyId_${product._id}`).value <=
                   product.qty
-                    ? document.querySelector(`#qtyId_${item.id}`).value++
+                    ? document.querySelector(`#qtyId_${product._id}`).value++
                     : "";
                  
                 }}
