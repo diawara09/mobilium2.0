@@ -7,9 +7,11 @@ import { serverUrl } from "~/utils/serverUrl";
 import { Link, useFetcher } from "react-router";
 import { useEffect, useState } from "react";
 import ProductCard from "~/components/product/ProductCard";
+import { HSCarousel } from "flyonui/flyonui";
 export function Welcome() {
   const fetcher = useFetcher();
   const [featured, setFeatured] = useState([]);
+  const multiSlide = document.querySelector("#multi-slide")
   useEffect(() => {
     if (fetcher.state === "idle" && !fetcher.data) {
       fetcher.load("/loaders/last10");
@@ -17,6 +19,10 @@ export function Welcome() {
     if (fetcher.data) {
       setFeatured(fetcher.data);
       console.log(featured);
+      // const { element } = HSCarousel.getInstance(multiSlide, true)
+
+      // element.destroy()
+      HSCarousel.autoInit()
     }
   }, [fetcher.data]);
   return (
@@ -161,30 +167,7 @@ export function Welcome() {
 
               
 
-              <div className="carousel-slide">
-                <div className="bg-base-200 flex h-full justify-center p-6">
-                  <div className="bg-white gap-2.5 flex flex-col h-full max-w-sm items-center justify-center p-6">
-                    <img src={newProduct} />
-                    <span className="text-lg font-bold">
-                      Dummy Product Name
-                    </span>
-                    <div className="flex max-w-1/2 text-primary justify-between">
-                      <span className="icon-[tabler--star] size-4"></span>
-                      <span className="icon-[tabler--star] size-4"></span>
-                      <span className="icon-[tabler--star] size-4"></span>
-                      <span className="icon-[tabler--star] size-4"></span>
-                      <span className="icon-[tabler--star] size-4"></span>
-                    </div>
-                    <ul className="menu menu-horizontal bg-gray-50">
-                      <li>
-                        <a href="#" aria-label="Message Link">
-                          <span className="icon-[tabler--shopping-cart-plus] size-5"></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+             
             </div>
           </div>
 
