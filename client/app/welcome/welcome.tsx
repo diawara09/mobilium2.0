@@ -1,11 +1,22 @@
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
-import carousel2 from '../carousel2.webp'
-import carousel3 from '../carousel3.webp'
-import newProduct from '../product7.webp'
+import carousel2 from "../carousel2.webp";
+import carousel3 from "../carousel3.webp";
+import newProduct from "../product7.webp";
 import { serverUrl } from "~/utils/serverUrl";
-import { Link } from "react-router";
+import { Link, useFetcher } from "react-router";
+import { useEffect, useState } from "react";
 export function Welcome() {
+  const fetcher = useFetcher();
+  const [featured, setFeatured] = useState([]);
+  useEffect(() => {
+    if (fetcher.state !== "idle" && !fetcher.data) {
+      fetcher.load("/loaders/last10");
+    }
+    if (fetcher.data) {
+      setFeatured(fetcher.data);
+    }
+  });
   return (
     <>
       <div
@@ -28,10 +39,13 @@ export function Welcome() {
                     Bienvenue sur Mobilium
                   </h2>
                   <p className="hidden lg:block mb-5  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]">
-                    {' '}
-                    Votre magasin de fourniture fiable!{' '}
+                    {" "}
+                    Votre magasin de fourniture fiable!{" "}
                   </p>
-                  <Link to={"/products"} className="btn btn-outline btn-primary lg:my-2 max-w-40  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]">
+                  <Link
+                    to={"/products"}
+                    className="btn btn-outline btn-primary lg:my-2 max-w-40  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]"
+                  >
                     Nos Produits
                   </Link>
                 </div>
@@ -51,10 +65,13 @@ export function Welcome() {
                     Bienvenue sur Mobilium
                   </h2>
                   <p className="hidden lg:block mb-5  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]">
-                    {' '}
-                    Votre magasin de fourniture fiable!{' '}
+                    {" "}
+                    Votre magasin de fourniture fiable!{" "}
                   </p>
-                  <Link to={"/products"} className="btn btn-outline btn-primary lg:my-2 max-w-40  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]">
+                  <Link
+                    to={"/products"}
+                    className="btn btn-outline btn-primary lg:my-2 max-w-40  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]"
+                  >
                     Nos Produits
                   </Link>
                 </div>
@@ -68,23 +85,26 @@ export function Welcome() {
 
       <div className="flex justify-center  gap-8 items-stretch flex-wrap m-5 p-5 lg:m-10 lg:p-10">
         <div className="flex bg-white flex-col hover:shadow-md rounded-none min-w-sm lg:min-w-md p-5">
-          <div className="flex flex-row justify-between w-full">
+          {featured && featured.length >= 1 ? <>
+            <div className="flex flex-row justify-between w-full">
             <div className="badge badge-primary">New</div>
-            <span className="text-lg">$50.00</span>
+            <span className="text-lg"> {featured[0].price.$numberDecimal} </span>
           </div>
           <div className="flex w-full justify-center p-2">
-            <img src={newProduct} className="w-3/6" />
+            <img src={serverUrl + "/" + featured[0].images.split(";")[0]} className="w-3/6" />
           </div>
 
           <div className="flex flex-row justify-between w-full">
             <div className="flex flex-col">
-              <h6 className="font-bold">Product</h6>
-              <p className="text-sm">Fourniture</p>
+              <h6 className="font-bold"> {featured[0].name} </h6>
+              <p className="text-sm"> {featured[0].category.name} </p>
             </div>
-            <button className="btn border-2 border-gray-400 bg-gray-300 text-gray-500">
-              Buy Now
-            </button>
+            <Link to={`/singleProduct/${featured[0]._id}`} className="btn border-2 border-gray-400 bg-gray-300 text-gray-500">
+            <span className="icon-[tabler--eye] size-6"></span>
+            </Link>
           </div>
+          </> : ""}
+         
         </div>
 
         <div className="flex bg-white justify-center items-center  hover:shadow-md rounded-none min-w-sm lg:min-w-lg p-5">
@@ -276,9 +296,9 @@ export function Welcome() {
                       Discount 60%
                     </span>
                     <p className="max-w-96 my-4">
-                      {' '}
+                      {" "}
                       Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Corporis, ipsum? Recusandae nulla nisi illum placeat.{' '}
+                      Corporis, ipsum? Recusandae nulla nisi illum placeat.{" "}
                     </p>
                     <Link to="#" className="text-sm text-primary">
                       Get discount
@@ -296,9 +316,9 @@ export function Welcome() {
                       Discount 15%
                     </span>
                     <p className="max-w-96 my-4">
-                      {' '}
+                      {" "}
                       Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Corporis, ipsum? Recusandae nulla nisi illum placeat.{' '}
+                      Corporis, ipsum? Recusandae nulla nisi illum placeat.{" "}
                     </p>
                     <Link to="#" className="text-sm text-primary">
                       Get discount
@@ -316,9 +336,9 @@ export function Welcome() {
                       Discount 10%
                     </span>
                     <p className="max-w-96 my-4">
-                      {' '}
+                      {" "}
                       Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Corporis, ipsum? Recusandae nulla nisi illum placeat.{' '}
+                      Corporis, ipsum? Recusandae nulla nisi illum placeat.{" "}
                     </p>
                     <Link to="#" className="text-sm text-primary">
                       Get discount
@@ -333,6 +353,5 @@ export function Welcome() {
         </div>
       </div>
     </>
-  )
+  );
 }
-
