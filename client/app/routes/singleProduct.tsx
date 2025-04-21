@@ -81,11 +81,13 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
         </div>
         <div className="flex flex-col min-w-60 p-5">
             <span className="text-lg font bold"> {product.name} </span>
-            <span className="text-lg text-primary font bold"> {(
+            <span className="text-lg text-primary font bold"> 
+                {product.onSale ?(
                     product.price.$numberDecimal -
                     (product.onSale.discount_rate.$numberDecimal / 100) *
                       product.price.$numberDecimal
-                  ).toFixed(2)} FCFA</span>
+                  ).toFixed(2) : product.price.$numberDecimal.toFixed(2)}
+                  FCFA</span>
             <p className="my-3"> {product.description} </p>
 
         </div>
