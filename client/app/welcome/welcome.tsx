@@ -15,6 +15,7 @@ export function Welcome() {
     }
     if (fetcher.data) {
       setFeatured(fetcher.data);
+      console.log(featured);
     }
   });
   return (
