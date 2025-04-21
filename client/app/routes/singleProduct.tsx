@@ -39,7 +39,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
         </div>
       </div>
       <div className="flex flex-wrap lg:flex-row shadow-md lg:max-w-9/10 mx-auto p-5">
-        <div className="flex lg:min-w-1/2 flex-1 min-w-60">
+        <div className="flex lg:min-w-1/2 flex-1 min-w-60 shrink-0">
           <div
             id="horizontal-thumbnails"
             data-carousel='{ "loadingClassNamees": "opacity-0" }'
@@ -91,7 +91,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col lg:min-w-1/2 flex-1 p-5">
+        <div className="flex flex-col lg:min-w-1/2 flex-1  p-5">
           <span className="text-lg font bold"> {product.name} </span>
           <span className="text-lg text-primary font bold">
             {product.onSale
@@ -137,9 +137,9 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
                   document.querySelector(`#qtyId_${product._id}`).value > 1
                     ? document.querySelector(`#qtyId_${product._id}`).value--
                     : "";
-                  fetcher.submit(e.currentTarget.form);
+                 
                 }}
-                className="btn btn-xs"
+                className="btn"
               >
                 {" "}
                 {fetcher.state !== "idle" ? (
@@ -157,9 +157,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
                 min={1}
                 max={product.qty}
                 name="qty"
-                onChange={(e) => {
-                  fetcher.submit(e.currentTarget.form);
-                }}
+               
               />
               <button
                 type="button"
@@ -168,9 +166,9 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
                   product.qty
                     ? document.querySelector(`#qtyId_${item.id}`).value++
                     : "";
-                  fetcher.submit(e.currentTarget.form);
+                 
                 }}
-                className="btn btn-xs"
+                className="btn"
               >
                 {" "}
                 {fetcher.state !== "idle" ? (
@@ -182,7 +180,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
               <button
                 disabled={product.qty <= 0}
                 type="submit"
-                className="btn btn-primary text-white"
+                className="btn btn-primary text-white mx-3"
               >
                 {fetcher.state !== "submitting" ? (
                   <span className="icon-[tabler--shopping-cart-plus] size-6"></span>
