@@ -86,7 +86,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
                     product.price.$numberDecimal -
                     (product.onSale.discount_rate.$numberDecimal / 100) *
                       product.price.$numberDecimal
-                  ).toFixed(2) : product.price.$numberDecimal.toFixed(2)}
+                  ).toFixed(2) : product.price.$numberDecimal}
                   FCFA</span>
             <p className="my-3"> {product.description} </p>
 
