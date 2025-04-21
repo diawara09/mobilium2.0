@@ -148,11 +148,11 @@ export function Welcome() {
         >
           <div className="carousel rounded-none">
             <div className="carousel-body  h-full opacity-0">
-              featured.map((product) => (
+              {featured.map((product) => (
                     <div className="carousel-slide">
                       <ProductCard item={product}/>
                     </div>
-                  ))
+                  ))}
                 
 
               
