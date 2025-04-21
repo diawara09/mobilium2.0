@@ -5,6 +5,7 @@ export async function clientLoader(){
         const req = await fetch(serverUrl + "/product/last10", {
             method: "GET",
             credentials: 'include',
+            mode: 'cors',
             headers:{
                 'Content-Type': 'application/json'
             }
