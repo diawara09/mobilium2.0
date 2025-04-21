@@ -35,6 +35,7 @@ export default [
 
     /* // product loaders    */
     route("/loaders/allProducts", "./loaders/product/allProducts.tsx"),
+    route("/loaders/last10", "./loaders/product/last10.tsx"),
 
     /* // user cart loader and get all addresses */
     route("loaders/userCart", "./loaders/cart/userCart.tsx"),
