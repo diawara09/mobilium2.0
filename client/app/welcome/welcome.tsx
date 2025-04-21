@@ -31,9 +31,9 @@ export function Welcome() {
                     {' '}
                     Votre magasin de fourniture fiable!{' '}
                   </p>
-                  <button className="btn btn-outline btn-primary lg:my-2 max-w-40  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]">
+                  <Link to={"/products"} className="btn btn-outline btn-primary lg:my-2 max-w-40  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]">
                     Nos Produits
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -54,9 +54,9 @@ export function Welcome() {
                     {' '}
                     Votre magasin de fourniture fiable!{' '}
                   </p>
-                  <button className="btn btn-outline btn-primary lg:my-2 max-w-40  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]">
+                  <Link to={"/products"} className="btn btn-outline btn-primary lg:my-2 max-w-40  intersect:motion-translate-y-in-100 intersect:motion-opacity-in-0 motion-delay-[2s] motion-duration-[5s]">
                     Nos Produits
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
