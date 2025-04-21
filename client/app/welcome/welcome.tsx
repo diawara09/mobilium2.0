@@ -7,7 +7,8 @@ import { serverUrl } from "~/utils/serverUrl";
 import { Link, useFetcher } from "react-router";
 import { useEffect, useState } from "react";
 import ProductCard from "~/components/product/ProductCard";
-import { HSCarousel } from "flyonui/flyonui";
+import pkg from 'flyonui/flyonui.js';
+const { HSCarousel } = pkg;
 export function Welcome() {
   const fetcher = useFetcher();
   const [featured, setFeatured] = useState([]);
