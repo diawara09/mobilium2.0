@@ -6,6 +6,7 @@ import newProduct from "../product7.webp";
 import { serverUrl } from "~/utils/serverUrl";
 import { Link, useFetcher } from "react-router";
 import { useEffect, useState } from "react";
+import ProductCard from "~/components/product/ProductCard";
 export function Welcome() {
   const fetcher = useFetcher();
   const [featured, setFeatured] = useState([]);
@@ -17,7 +18,7 @@ export function Welcome() {
       setFeatured(fetcher.data);
       console.log(featured);
     }
-  },[fetcher.data]);
+  }, [fetcher.data]);
   return (
     <>
       <div
@@ -86,26 +87,38 @@ export function Welcome() {
 
       <div className="flex justify-center  gap-8 items-stretch flex-wrap m-5 p-5 lg:m-10 lg:p-10">
         <div className="flex bg-white flex-col hover:shadow-md rounded-none min-w-sm lg:min-w-md p-5">
-          {featured && featured.length >= 1 ? <>
-            <div className="flex flex-row justify-between w-full">
-            <div className="badge badge-primary">New</div>
-            <span className="text-lg"> {featured[0].price.$numberDecimal} </span>
-          </div>
-          <div className="flex w-full justify-center p-2">
-            <img src={serverUrl + "/" + featured[0].images.split(";")[0]} className="w-3/6" />
-          </div>
+          {featured && featured.length >= 1 ? (
+            <>
+              <div className="flex flex-row justify-between w-full">
+                <div className="badge badge-primary">New</div>
+                <span className="text-lg">
+                  {" "}
+                  {featured[0].price.$numberDecimal} FCFA
+                </span>
+              </div>
+              <div className="flex w-full justify-center p-2">
+                <img
+                  src={serverUrl + "/" + featured[0].images.split(";")[0]}
+                  className="w-3/6"
+                />
+              </div>
 
-          <div className="flex flex-row justify-between w-full">
-            <div className="flex flex-col">
-              <h6 className="font-bold"> {featured[0].name} </h6>
-              <p className="text-sm"> {featured[0].category.name} </p>
-            </div>
-            <Link to={`/singleProduct/${featured[0]._id}`} className="btn border-2 border-gray-400 bg-gray-300 text-gray-500">
-            <span className="icon-[tabler--eye] size-6"></span>
-            </Link>
-          </div>
-          </> : ""}
-         
+              <div className="flex flex-row justify-between w-full">
+                <div className="flex flex-col">
+                  <h6 className="font-bold"> {featured[0].name} </h6>
+                  <p className="text-sm"> {featured[0].category.name} </p>
+                </div>
+                <Link
+                  to={`/singleProduct/${featured[0]._id}`}
+                  className="btn border-2 border-gray-400 bg-gray-300 text-gray-500"
+                >
+                  <span className="icon-[tabler--eye] size-6"></span>
+                </Link>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="flex bg-white justify-center items-center  hover:shadow-md rounded-none min-w-sm lg:min-w-lg p-5">
@@ -134,34 +147,13 @@ export function Welcome() {
         >
           <div className="carousel rounded-none">
             <div className="carousel-body  h-full opacity-0">
-              <div className="carousel-slide">
-                <div className="bg-base-200 flex h-full justify-center p-6">
-                  <div className="bg-white gap-2.5 flex flex-col h-full max-w-sm items-center justify-center p-6 relative">
-                    <div className="flex flex-row justify-between w-full absolute top-0 p-10">
-                      <div className="badge badge-primary badge-sm">New</div>
-                      <span className="text-primary font-bold">50.00 FCFA</span>
+              {featured
+                ? featured.map((product) => (
+                    <div className="carousel-slide">
+                      <ProductCard item={product}/>
                     </div>
-                    <img src={newProduct} />
-                    <span className="text-lg font-bold">
-                      Dummy Product Name
-                    </span>
-                    <div className="flex max-w-1/2 text-primary justify-between">
-                      <span className="icon-[tabler--star] size-4"></span>
-                      <span className="icon-[tabler--star] size-4"></span>
-                      <span className="icon-[tabler--star] size-4"></span>
-                      <span className="icon-[tabler--star] size-4"></span>
-                      <span className="icon-[tabler--star] size-4"></span>
-                    </div>
-                    <ul className="menu menu-horizontal bg-gray-50">
-                      <li>
-                        <a href="#" aria-label="Message Link">
-                          <span className="icon-[tabler--shopping-cart-plus] size-6"></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+                  ))
+                : ""}
 
               <div className="carousel-slide">
                 <div className="bg-base-200 flex h-full justify-center p-6">
