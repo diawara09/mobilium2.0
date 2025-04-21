@@ -16,7 +16,7 @@ export default function Products() {
             </h1>
           </div>
           <div className="absolute bottom-2.5 w-full px-10 font-bold lg:text-lg text-secondary">
-            <Link to="/">Home</Link> / Shop
+            <Link to="/">Accueil</Link> / Shop
           </div>
         </div>
 
