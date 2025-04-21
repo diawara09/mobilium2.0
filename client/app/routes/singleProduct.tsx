@@ -20,8 +20,9 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 }
 
 export default function SingleProduct({ loaderData }: Route.ComponentProps) {
-  const product = loaderData;
-  const images = product.images.split(";");
+  const product = loaderData
+  console.log(product)
+  const images = product.images.split(";")
   return (
     <>
       <div className="flex flex-wrap shadow-md lg:max-w-9/10 mx-auto p-5">
