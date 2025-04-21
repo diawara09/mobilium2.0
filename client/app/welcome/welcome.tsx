@@ -140,21 +140,51 @@ export function Welcome() {
           <hr className="h-2.5 text-primary bg-primary max-w-24 lg:max-w-52" />
         </div>
 
-        <div
+        {featured
+                ? <div
           id="multi-slide"
           data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 4 } }'
           className="relative w-full"
         >
           <div className="carousel rounded-none">
             <div className="carousel-body  h-full opacity-0">
-              {featured
-                ? featured.map((product) => (
+              {featured.map((product) => (
                     <div className="carousel-slide">
                       <ProductCard item={product}/>
                     </div>
-                  ))
-                : ""}
+                  ))}
+                
 
+              
+
+              
+
+              
+
+              <div className="carousel-slide">
+                <div className="bg-base-200 flex h-full justify-center p-6">
+                  <div className="bg-white gap-2.5 flex flex-col h-full max-w-sm items-center justify-center p-6">
+                    <img src={newProduct} />
+                    <span className="text-lg font-bold">
+                      Dummy Product Name
+                    </span>
+                    <div className="flex max-w-1/2 text-primary justify-between">
+                      <span className="icon-[tabler--star] size-4"></span>
+                      <span className="icon-[tabler--star] size-4"></span>
+                      <span className="icon-[tabler--star] size-4"></span>
+                      <span className="icon-[tabler--star] size-4"></span>
+                      <span className="icon-[tabler--star] size-4"></span>
+                    </div>
+                    <ul className="menu menu-horizontal bg-gray-50">
+                      <li>
+                        <a href="#" aria-label="Message Link">
+                          <span className="icon-[tabler--shopping-cart-plus] size-5"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -172,6 +202,7 @@ export function Welcome() {
             </span>
           </button>
         </div>
+        : ""}
       </div>
 
       <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
