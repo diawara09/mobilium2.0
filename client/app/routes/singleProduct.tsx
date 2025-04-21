@@ -26,7 +26,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <div className="flex flex-wrap shadow-md lg:max-w-9/10 mx-auto p-5">
-        <div className="flex min-w-60 flex-col">
+        <div className="flex lg:min-w-1/2 min-w-60 flex-col">
           <div
             id="horizontal-thumbnails"
             data-carousel='{ "loadingClassNamees": "opacity-0" }'
