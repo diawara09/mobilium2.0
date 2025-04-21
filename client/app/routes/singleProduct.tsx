@@ -122,7 +122,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
             <fetcher.Form
               method="post"
               action={"/addToCart"}
-              className="flex max-w-8/10 mx-auto"
+              className="flex max-w-8/10"
             >
               <input type="hidden" value={product._id} name="itemId" />
               <input
