@@ -10,7 +10,7 @@ export function Welcome() {
   const fetcher = useFetcher();
   const [featured, setFeatured] = useState([]);
   useEffect(() => {
-    if (fetcher.state !== "idle" && !fetcher.data) {
+    if (fetcher.state === "idle" && !fetcher.data) {
       fetcher.load("/loaders/last10");
     }
     if (fetcher.data) {
