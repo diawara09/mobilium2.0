@@ -38,8 +38,8 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
           <Link to="/">Accueil</Link> / Produit
         </div>
       </div>
-      <div className="flex flex-col items-center  lg:flex-row shadow-md lg:max-w-9/10 mx-auto p-5">
-        <div className="flex lg:min-w-1/2 flex-1 min-w-60 flex-col">
+      <div className="flex flex-wrap lg:flex-row shadow-md lg:max-w-9/10 mx-auto p-5">
+        <div className="flex lg:min-w-1/2 flex-1 min-w-60">
           <div
             id="horizontal-thumbnails"
             data-carousel='{ "loadingClassNamees": "opacity-0" }'
@@ -118,11 +118,11 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
             {product.width + "x" + product.length}{" "}
           </p>
 
-          <p>
+          <p className="max-w-full">
             <fetcher.Form
               method="post"
               action={"/addToCart"}
-              className="flex items-center justify-center gap-2"
+              className="flex max-w-8/10 mx-auto"
             >
               <input type="hidden" value={product._id} name="itemId" />
               <input
@@ -151,7 +151,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
 
               <input
                 id={`qtyId_${product._id}`}
-                className="input max-w-10"
+                className="input"
                 type="number"
                 step={1}
                 min={1}
@@ -182,7 +182,7 @@ export default function SingleProduct({ loaderData }: Route.ComponentProps) {
               <button
                 disabled={product.qty <= 0}
                 type="submit"
-                className="btn btn-primary text-white w-full"
+                className="btn btn-primary text-white"
               >
                 {fetcher.state !== "submitting" ? (
                   <span className="icon-[tabler--shopping-cart-plus] size-6"></span>
