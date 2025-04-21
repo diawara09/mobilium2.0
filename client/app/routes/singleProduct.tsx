@@ -4,7 +4,7 @@ import type { Route } from "./+types/layout";
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const { id } = params;
   try {
-    const req = await fetch(serverUrl + `/product/${id}`, {
+    const req = await fetch(serverUrl + `/product/single/${id}`, {
       method: "GET",
       mode: "cors",
       credentials: "include",
