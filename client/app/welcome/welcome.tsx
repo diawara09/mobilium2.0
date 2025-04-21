@@ -7,8 +7,7 @@ import { serverUrl } from "~/utils/serverUrl";
 import { Link, useFetcher } from "react-router";
 import { useEffect, useState } from "react";
 import ProductCard from "~/components/product/ProductCard";
-import pkg from 'flyonui/flyonui.js';
-const { HSCarousel } = pkg;
+
 export function Welcome() {
   const fetcher = useFetcher();
   const [featured, setFeatured] = useState([]);
@@ -20,10 +19,7 @@ export function Welcome() {
     if (fetcher.data) {
       setFeatured(fetcher.data);
       console.log(featured);
-      // const { element } = HSCarousel.getInstance(multiSlide, true)
-
-      // element.destroy()
-      HSCarousel.autoInit()
+      
     }
   }, [fetcher.data]);
   return (
