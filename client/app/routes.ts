@@ -11,7 +11,7 @@ export default [
     // Product
     route("products", "./routes/products.tsx"),
     route("singleProduct/:id", "./routes/singleProduct.tsx"),
-    route("categoryProduct/:id", "./routes/categoryProduct.tsx"),
+    route("categoryProducts/:id", "./routes/categoryProduct.tsx"),
     
     //cart
     route("cart", "./routes/cart/cart.tsx"),
