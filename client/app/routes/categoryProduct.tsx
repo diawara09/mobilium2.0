@@ -56,7 +56,7 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
             console.log("different Page")
           } 
 
-    },[location])
+    },[location,categoryId])
     const firstProduct = loaderData[0]
     return(
         <>
