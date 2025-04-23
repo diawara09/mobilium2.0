@@ -5,7 +5,7 @@ import banner from "../banner.jpg"
 import CategoryLink from "~/components/category/CategoryLink";
 import InfiniteEntity from "~/components/InfinteEntity";
 import ProductCard from "~/components/product/ProductCard";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const { id } = params;
@@ -43,11 +43,13 @@ const usePrevLocation = (location) => {
 export default function categoryProduct({loaderData}: Route.ComponentProps) {
     const {id} = useParams()
     const loaction = useLocation()
+    const [categoryId, setCategoryId] = useState(id)
     const prevLocation = usePrevLocation(location)
     useEffect(() => {
         if (
             prevLocation !== location
           ) {
+            setCategoryId(useParams().id)
             console.log("different Page")
           } 
 
@@ -72,8 +74,8 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
             <CategoryLink/>
           </div>
           <InfiniteEntity
-            loaderRoute={`/loaders/categoryProducts/${id}`}
-            fetchMoreURL={serverUrl + `/product/${id}`}
+            loaderRoute={`/loaders/categoryProducts/${categoryId}`}
+            fetchMoreURL={serverUrl + `/product/${categoryId}`}
             UnitEntity={ProductCard}
           />
         </div>
