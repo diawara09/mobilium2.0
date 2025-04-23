@@ -7,8 +7,7 @@ import { serverUrl } from "~/utils/serverUrl";
 import { Link, useFetcher } from "react-router";
 import { useEffect, useState } from "react";
 import ProductCard from "~/components/product/ProductCard";
-import  HSCarousel  from "../../node_modules/flyonui/dist/carousel";
-
+//import { HSCarousel } from "flyonui/flyonui";
 export function Welcome() {
   const fetcher = useFetcher();
   const [featured, setFeatured] = useState([]);
@@ -19,8 +18,8 @@ export function Welcome() {
     }
     if (fetcher.data) {
       setFeatured(fetcher.data);
-      console.log(featured);
-       HSCarousel.autoInit()
+      //console.log(featured);
+      //HSCarousel.autoInit()
       
     }
   }, [fetcher.data]);
@@ -145,24 +144,19 @@ export function Welcome() {
           <hr className="h-2.5 text-primary bg-primary max-w-24 lg:max-w-52" />
         </div>
 
-        {featured
-                ? <div
+         <div
           id="multi-slide"
           data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 4 } }'
           className="relative w-full"
         >
           <div className="carousel rounded-none">
             <div className="carousel-body  h-full opacity-0">
-              {featured.map((product) => (
+              {featured && featured.map((product) => (
                     <div className="carousel-slide">
                       <ProductCard item={product}/>
                     </div>
                   ))}
                 
-
-              
-
-              
 
               
 
@@ -184,7 +178,7 @@ export function Welcome() {
             </span>
           </button>
         </div>
-        : ""}
+       
       </div>
 
       <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
