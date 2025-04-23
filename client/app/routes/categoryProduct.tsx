@@ -45,6 +45,7 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
     const location = useLocation()
     const [categoryId, setCategoryId] = useState(id)
     const prevLocation = usePrevLocation(location)
+
     useEffect(() => {
         if (
             prevLocation !== location
@@ -57,6 +58,11 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
           } 
 
     },[location,categoryId])
+    const loaderRoute = `/loaders/categoryProducts/${categoryId}`
+    const fetchUrl = serverUrl + `/product/${categoryId}`
+
+    console.log(loaderRoute);
+    console.log(fetchUrl);
     const firstProduct = loaderData[0]
     return(
         <>
