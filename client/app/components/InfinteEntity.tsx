@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useFetcher } from 'react-router'
 import InfiniteScroll from 'react-infinite-scroll-component'
 //import { FaPlus } from 'react-icons/fa6'
@@ -8,25 +8,41 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 //import AnimatedLayout from '../../animation/animatedLayout'
 //import ProductCard from '../../components/productCard'
 
+//THIS IS THE CUSTOM HOOK
+
+const usePrevLocation = (location) => {
+
+    const prevLocRef = useRef(location)
+    
+    useEffect(()=>{
+    
+    prevLocRef.current = location
+    
+    },[location])
+    
+    return prevLocRef.current
+    
+    }
+
 export default function InfiniteEntity({
   loaderRoute,
   fetchMoreURL,
   UnitEntity,
-  paramsChanged
 }) {
 
   const fetcher = useFetcher()
   const [items, setItems] = useState([])
   const [cursor, setCursor] = useState(null)
   const [hasMore, setHasMore] = useState(true)
+  const prevLoader = usePrevLocation(loaderRoute)
 
   useEffect(() => {
-    if ((!fetcher.data && fetcher.state === 'idle') || paramsChanged ===true) {
+    if ((!fetcher.data && fetcher.state === 'idle') || prevLoader !== loaderRoute) {
       fetcher.load(loaderRoute)
     }
     if (fetcher.data) setItems(fetcher.data)
     cursor ? fetchMoreData() : ''
-  }, [cursor, fetcher.data, paramsChanged])
+  }, [cursor, fetcher.data,loaderRoute])
 
   const fetchMoreData = async () => {
     let completeUrl = fetchMoreURL + `?cursor=${cursor || ''}&limit=${5}`

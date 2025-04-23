@@ -31,7 +31,7 @@ export default function SalesProduct() {
             <SaleLink/>
           </div>
           <InfiniteEntity
-          paramsChanged={false}
+         
             loaderRoute={`/loaders/allProductsOnSale`}
             fetchMoreURL={serverUrl + `/product/sales`}
             UnitEntity={ProductCard}
