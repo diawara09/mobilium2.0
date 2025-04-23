@@ -213,7 +213,7 @@ export function Welcome() {
               <div className="carousel-slide">
                 <div className="bg-white flex flex-wrap  h-full justify-evenly p-6">
                   <img src={newProduct} className="min-w-sm lg:min-w-lg" />
-                  <div className="min-w-sm lg:min-w-lg flex flex-col m-3 lg:justify-center items-start">
+                  <div className="min-w-60 lg:min-w-lg flex flex-col m-3 lg:justify-center items-start">
                     <span className="text-4xl lg:text-6xl  text-primary font-extrabold">
                       Discount 60%
                     </span>
