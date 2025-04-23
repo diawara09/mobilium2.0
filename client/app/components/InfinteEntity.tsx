@@ -19,13 +19,12 @@ export default function InfiniteEntity({
   const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
-    if (!fetcher.data && fetcher.state === 'idle' || loaderRoute) {
+    if (!fetcher.data && fetcher.state === 'idle') {
       fetcher.load(loaderRoute)
-      loaderRoute = null
     }
     if (fetcher.data) setItems(fetcher.data)
     cursor ? fetchMoreData() : ''
-  }, [cursor, fetcher.data, loaderRoute])
+  }, [cursor, fetcher.data])
 
   const fetchMoreData = async () => {
     let completeUrl = fetchMoreURL + `?cursor=${cursor || ''}&limit=${5}`
