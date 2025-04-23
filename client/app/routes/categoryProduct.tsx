@@ -1,6 +1,6 @@
 import { serverUrl } from "~/utils/serverUrl";
 import type { Route } from "./+types/layout";
-import { Link, useLocation, useParams } from "react-router";
+import { Link, useLocation, useNavigate, useParams } from "react-router";
 import banner from "../banner.jpg"
 import CategoryLink from "~/components/category/CategoryLink";
 import InfiniteEntity from "~/components/InfinteEntity";
@@ -43,17 +43,18 @@ const usePrevLocation = (location) => {
 export default function categoryProduct({loaderData}: Route.ComponentProps) {
     const {id} = useParams()
     const location = useLocation()
+    const navigate = useNavigate()
     const [categoryId, setCategoryId] = useState(id)
     const prevLocation = usePrevLocation(location)
-    console.log(`Prev: ${prevLocation}`)
     useEffect(() => {
         if (
             prevLocation !== location
           ) {
-            const params = location.pathname.split("/")
-            const newId = params[params.length-1]
-            console.log(newId)
-            setCategoryId(newId)
+            navigate(location.pathname)
+            // const params = location.pathname.split("/")
+            // const newId = params[params.length-1]
+            // console.log(newId)
+            // setCategoryId(newId)
             console.log("different Page")
           } 
 
