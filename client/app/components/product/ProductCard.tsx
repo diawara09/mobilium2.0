@@ -12,12 +12,12 @@ export default function ProductCard({ item }) {
 
             {item.onSale ? (
               <span className="text-primary font-bold">
-                $
+                
                 {(
                   item.price.$numberDecimal -
                   (item.onSale.discount_rate.$numberDecimal / 100) *
                     item.price.$numberDecimal
-                ).toFixed(2)}
+                ).toFixed(2)} FCFA
               </span>
             ) : (
               <span className="text-primary font-bold">
