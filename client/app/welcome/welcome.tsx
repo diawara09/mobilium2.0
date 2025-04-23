@@ -152,9 +152,7 @@ export function Welcome() {
           <div className="carousel rounded-none">
             <div className="carousel-body  h-full opacity-0">
               {featured && featured.map((product) => (
-                    <div key={product._id} className="carousel-slide">
-                      <ProductCard item={product}/>
-                    </div>
+                      <ProductCard key={product._id} item={product}/>
                   ))}
                 
 
