@@ -8,7 +8,6 @@ export default function CategoryLink() {
   useEffect(() => {
     if (fetcher.state === "idle" && !fetcher.data) {
       fetcher.load("/loaders/allCategories");
-      window.HSStaticMethods.autoInit(["dropdown"])
     }
   }, [fetcher]);
 
