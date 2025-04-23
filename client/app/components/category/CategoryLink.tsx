@@ -16,7 +16,7 @@ export default function CategoryLink() {
        
         <ul className="menu menu-horizontal max-w-full max-h-full overflow-auto lg:menu-vertical">
             {fetcher.data.map((item) => (
-            <li className="">  <Link key={item._id} to={`/categoryProduct/${item._id}`}>
+            <li className="">  <Link key={item._id} to={`/categoryProducts/${item._id}`}>
                 {" "}
                 {item.name}{" "}
               </Link></li>
