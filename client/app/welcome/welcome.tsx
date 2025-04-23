@@ -151,7 +151,7 @@ export function Welcome() {
           data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 4 } }'
         >
           <div className="carousel rounded-none">
-             <div className="carousel-body  h-full opacity-0">
+             <div className="carousel-body w-full  h-full opacity-0" style={featured?{width:"100%"}:{} }>
               {
                 featured.map((product) => (
                   <div key={product._id} className="carousel-slide">
