@@ -178,7 +178,7 @@ export function Welcome() {
             },
           }}
           navigation={true}
-          modules={[Pagination]}
+          modules={[Pagination,Navigation]}
           className="mySwiper"
         >
           {featured.map((product) => (
