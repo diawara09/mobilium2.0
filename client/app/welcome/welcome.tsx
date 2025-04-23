@@ -146,7 +146,7 @@ export function Welcome() {
 
         <div
           id="multi-slide"
-          data-carousel= {featured ?'{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 4 } }' :""} 
+          {featured ?`data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 4 } }'` :""} 
           className="relative w-full"
         >
           <div className="carousel rounded-none">
