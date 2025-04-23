@@ -22,7 +22,7 @@ export default function Products() {
         </div>
 
         <div className="w-full">
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap p-10">
             <CategoryLink/>
           </div>
           <InfiniteEntity

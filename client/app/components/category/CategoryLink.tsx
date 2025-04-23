@@ -36,10 +36,10 @@ export default function CategoryLink() {
             data-dropdown-transition
           >
             {fetcher.data.map((item) => (
-              <Link key={item._id} to={`/categoryProduct/${item._id}`}>
+            <li className="dropdown-item">  <Link key={item._id} to={`/categoryProduct/${item._id}`}>
                 {" "}
                 {item.name}{" "}
-              </Link>
+              </Link></li>
             ))}
           </ul>
         </div>
