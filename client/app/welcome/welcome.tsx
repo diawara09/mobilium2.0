@@ -11,8 +11,8 @@ import ProductCard from "~/components/product/ProductCard";
 export function Welcome() {
   const fetcher = useFetcher();
   const [featured, setFeatured] = useState([]);
-  let featuredElements = []
-  const multiSlide = document.querySelector("#multi-slide")
+
+  const multiSlide = document.querySelector("#multi-slide");
   useEffect(() => {
     if (fetcher.state === "idle" && !fetcher.data) {
       fetcher.load("/loaders/last10");
@@ -21,12 +21,6 @@ export function Welcome() {
       setFeatured(fetcher.data);
       //console.log(featured);
       //HSCarousel.autoInit()
-      featuredElements = featured.map((product) => (
-        <div key={product._id} className="carousel-slide">
-          <ProductCard item={product}/>
-        </div>
-      ))
-      
     }
   }, [fetcher.data]);
   return (
@@ -150,20 +144,20 @@ export function Welcome() {
           <hr className="h-2.5 text-primary bg-primary max-w-24 lg:max-w-52" />
         </div>
 
-         <div
+        <div
           id="multi-slide"
           data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 4 } }'
           className="relative w-full"
         >
           <div className="carousel rounded-none">
-            <div className="carousel-body  h-full opacity-0">
-              {...featuredElements}
-                
-
-              
-
-             
-            </div>
+            {featured ?  <div className="carousel-body  h-full opacity-0">
+              {
+                featured.map((product) => (
+                  <div key={product._id} className="carousel-slide">
+                    <ProductCard item={product} />
+                  </div>
+                ))}
+            </div>: ""}
           </div>
 
           <button type="button" className="carousel-prev">
@@ -180,7 +174,6 @@ export function Welcome() {
             </span>
           </button>
         </div>
-       
       </div>
 
       <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
