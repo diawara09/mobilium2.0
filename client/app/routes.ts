@@ -11,6 +11,7 @@ export default [
     // Product
     route("products", "./routes/products.tsx"),
     route("singleProduct/:id", "./routes/singleProduct.tsx"),
+    route("categoryProduct/:id", "./routes/categoryProduct.tsx"),
     
     //cart
     route("cart", "./routes/cart/cart.tsx"),
@@ -34,8 +35,9 @@ export default [
     route('loaders/allSales', './loaders/sales/allSales.tsx'),
 
     /* // product loaders    */
-    route("/loaders/allProducts", "./loaders/product/allProducts.tsx"),
-    route("/loaders/last10", "./loaders/product/last10.tsx"),
+    route("loaders/allProducts", "./loaders/product/allProducts.tsx"),
+    route("loaders/last10", "./loaders/product/last10.tsx"),
+    route("loaders/categoryProducts/:id", "./loaders/product/categoryProducts.tsx"),
 
     /* // user cart loader and get all addresses */
     route("loaders/userCart", "./loaders/cart/userCart.tsx"),
