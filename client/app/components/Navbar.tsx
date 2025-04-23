@@ -48,6 +48,9 @@ export default function Navbar() {
                 <li>
                   <NavLink to="/products">Produits</NavLink>
                 </li>
+                <li>
+                  <NavLink to="/salesProducts">Promotions</NavLink>
+                </li>
                 <>
                   {user ? (
                     <li>
