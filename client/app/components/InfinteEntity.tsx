@@ -12,7 +12,7 @@ export default function InfiniteEntity({
   loaderRoute,
   fetchMoreURL,
   UnitEntity,
-  paramsChanged?
+  paramsChanged
 }) {
 
   const fetcher = useFetcher()
