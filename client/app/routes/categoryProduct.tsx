@@ -81,7 +81,6 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
             <CategoryLink/>
           </div>
           <InfiniteEntity
-            paramsChanged={paramsChanged}
             loaderRoute={`/loaders/categoryProducts/${categoryId}`}
             fetchMoreURL={serverUrl + `/product/${categoryId}`}
             UnitEntity={ProductCard}
