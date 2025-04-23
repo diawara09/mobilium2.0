@@ -9,7 +9,6 @@ export async function clientLoader(){
             headers: {
                 "Content-Type": "application/json"
             }
-
         })
         const response = await req.json()
         //console.log(response);
