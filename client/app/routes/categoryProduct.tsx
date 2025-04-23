@@ -42,6 +42,7 @@ const usePrevLocation = (location) => {
 
 export default function categoryProduct({loaderData}: Route.ComponentProps) {
     const {id} = useParams()
+    console.log(`Prev: ${id}`)
     const loaction = useLocation()
     const [categoryId, setCategoryId] = useState(id)
     const prevLocation = usePrevLocation(location)
@@ -49,7 +50,9 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
         if (
             prevLocation !== location
           ) {
-            setCategoryId(useParams().id)
+            const params = useParams()
+            console.log(params)
+            setCategoryId(params.id)
             console.log("different Page")
           } 
 
