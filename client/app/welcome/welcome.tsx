@@ -7,6 +7,18 @@ import { serverUrl } from "~/utils/serverUrl";
 import { Link, useFetcher } from "react-router";
 import { useEffect, useState } from "react";
 import ProductCard from "~/components/product/ProductCard";
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { Pagination, Navigation } from "swiper/modules";
+
 //import { HSCarousel } from "flyonui/flyonui";
 export function Welcome() {
   const fetcher = useFetcher();
@@ -137,7 +149,7 @@ export function Welcome() {
         </div>
       </div>
 
-      {featured && featured.length>1 ? <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
+      <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
         <div className="flex flex-col w-full gap-5 justify-center items-center">
           <span className="text-2xl lg:text-3xl font-bold">
             Featured Products
@@ -145,40 +157,40 @@ export function Welcome() {
           <hr className="h-2.5 text-primary bg-primary max-w-24 lg:max-w-52" />
         </div>
 
-        <div
-          id="multi-slide"
-          className="relative w-full"
-          data-carousel='{"slidesQty": { "xs": 1, "lg": 4 } }'
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={10}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
+          }}
+          navigation={true}
+          modules={[Pagination,Navigation]}
+          className="mySwiper"
         >
-          <div className="carousel rounded-none">
-             <div className="carousel-body w-full  h-full">
-              {
-                featured.map((product) => (
-                  <div key={product._id} className="carousel-slide">
-                    <ProductCard item={product} />
-                  </div>
-                ))}
-            </div>
-          </div>
+          {featured.map((product) => (
+            <SwiperSlide key={product._id}>
+              <ProductCard item={product} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-          <button type="button" className="carousel-prev">
-            <span className="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
-              <span className="icon-[tabler--chevron-left] size-5 cursor-pointer rtl:rotate-180"></span>
-            </span>
-            <span className="sr-only">Previous</span>
-          </button>
-
-          <button type="button" className="carousel-next">
-            <span className="sr-only">Next</span>
-            <span className="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
-              <span className="icon-[tabler--chevron-right] size-5 cursor-pointer rtl:rotate-180"></span>
-            </span>
-          </button>
-        </div>
+       
       </div>
- : ""}
 
-      
       <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
         <div
           id="indicators"
