@@ -43,18 +43,16 @@ const usePrevLocation = (location) => {
 export default function categoryProduct({loaderData}: Route.ComponentProps) {
     const {id} = useParams()
     const location = useLocation()
-    const navigate = useNavigate()
     const [categoryId, setCategoryId] = useState(id)
     const prevLocation = usePrevLocation(location)
     useEffect(() => {
         if (
             prevLocation !== location
           ) {
-            navigate(location.pathname)
-            // const params = location.pathname.split("/")
-            // const newId = params[params.length-1]
-            // console.log(newId)
-            // setCategoryId(newId)
+            const params = location.pathname.split("/")
+            const newId = params[params.length-1]
+            console.log(newId)
+            setCategoryId(newId)
             console.log("different Page")
           } 
 
