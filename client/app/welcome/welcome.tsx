@@ -190,10 +190,10 @@ export function Welcome() {
                 <ProductCard item={product} />
               </SwiperSlide>
             ))}
-            <span id="prev" className="size-9.5 absolute left-3 top-[50%] bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
+            <span id="prev" className="size-9.5 absolute z-1 left-0 top-[40%] bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
               <span className="icon-[tabler--chevron-left] size-5 cursor-pointer rtl:rotate-180"></span>
             </span>
-            <span id="next" className="size-9.5 absolute right-3 top-[50%] bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
+            <span id="next" className="size-9.5 absolute z-1 right-0 top-[40%] bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
               <span className="icon-[tabler--chevron-right] size-5 cursor-pointer rtl:rotate-180"></span>
             </span>
           </Swiper>
