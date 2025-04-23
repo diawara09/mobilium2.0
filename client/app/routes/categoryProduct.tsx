@@ -58,11 +58,7 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
           } 
 
     },[location,categoryId])
-    const loaderRoute = `/loaders/categoryProducts/${categoryId}`
-    const fetchUrl = serverUrl + `/product/${categoryId}`
-
-    console.log(loaderRoute);
-    console.log(fetchUrl);
+   
     const firstProduct = loaderData[0]
     return(
         <>

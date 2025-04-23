@@ -19,8 +19,9 @@ export default function InfiniteEntity({
   const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
-    if (!fetcher.data && fetcher.state === 'idle') {
+    if (!fetcher.data && fetcher.state === 'idle' || loaderRoute) {
       fetcher.load(loaderRoute)
+      loaderRoute=null
     }
     if (fetcher.data) setItems(fetcher.data)
     cursor ? fetchMoreData() : ''
