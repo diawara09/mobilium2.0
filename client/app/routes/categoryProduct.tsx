@@ -1,10 +1,11 @@
 import { serverUrl } from "~/utils/serverUrl";
 import type { Route } from "./+types/layout";
-import { Link, useParams } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
 import banner from "../banner.jpg"
 import CategoryLink from "~/components/category/CategoryLink";
 import InfiniteEntity from "~/components/InfinteEntity";
 import ProductCard from "~/components/product/ProductCard";
+import { useEffect, useRef } from "react";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const { id } = params;
@@ -23,9 +24,34 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     return { error };
   }
 }
+//THIS IS THE CUSTOM HOOK
+
+const usePrevLocation = (location) => {
+
+    const prevLocRef = useRef(location)
+    
+    useEffect(()=>{
+    
+    prevLocRef.current = location
+    
+    },[location])
+    
+    return prevLocRef.current
+    
+    }
 
 export default function categoryProduct({loaderData}: Route.ComponentProps) {
     const {id} = useParams()
+    const loaction = useLocation()
+    const prevLocation = usePrevLocation(location)
+    useEffect(() => {
+        if (
+            prevLocation !== location
+          ) {
+            console.log("different Page")
+          } 
+
+    },[location])
     const firstProduct = loaderData[0]
     return(
         <>
