@@ -179,12 +179,12 @@ export function Welcome() {
               },
             }}
             navigation={{
-              prevEl:  <span className="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
+              prevEl:  `<span className="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
               <span className="icon-[tabler--chevron-left] size-5 cursor-pointer rtl:rotate-180"></span>
-              </span>,
-              nextEl:  <span className="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
+              </span>`,
+              nextEl:  `<span className="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
               <span className="icon-[tabler--chevron-right] size-5 cursor-pointer rtl:rotate-180"></span>
-            </span>
+            </span>`
             }}
             modules={[Navigation]}
             className="max-w-full"
