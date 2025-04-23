@@ -6,11 +6,12 @@ import CategoryLink from "~/components/category/CategoryLink";
 import InfiniteEntity from "~/components/InfinteEntity";
 import ProductCard from "~/components/product/ProductCard";
 import { useEffect, useRef, useState } from "react";
+import SaleLink from "~/components/sale/SaleLink";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const { id } = params;
   try {
-    const req = await fetch(serverUrl + `/product/${id}`, {
+    const req = await fetch(serverUrl + `/product/sales/${id}`, {
       method: "GET",
       mode: "cors",
       credentials: "include",
@@ -68,21 +69,21 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
           <img src={banner} className="w-full" />
           <div className="flex justify-center w-full h-full items-center absolute top-0 backdrop-grayscale-100">
             <h1 className="text-3xl lg:text-5xl font-extrabold text-secondary">
-              {firstProduct ? firstProduct.category.name : "Categorie vide"}
+              {firstProduct ? firstProduct.onSale.name : "Categorie vide"}
             </h1>
           </div>
           <div className="absolute bottom-2.5 w-full px-10 font-bold lg:text-lg text-secondary">
-            <Link to="/">Accueil</Link> / {firstProduct ? firstProduct.category.name : "Categorie vide"}
+            <Link to="/">Accueil</Link> / {firstProduct ? firstProduct.onSale.name : "Categorie vide"}
           </div>
         </div>
 
         <div className="w-full flex flex-col lg:flex-row">
           <div className="flex flex-wrap p-10 lg:flex-1/4">
-            <CategoryLink/>
+            <SaleLink/>
           </div>
           <InfiniteEntity
-            loaderRoute={`/loaders/categoryProducts/${categoryId}`}
-            fetchMoreURL={serverUrl + `/product/${categoryId}`}
+            loaderRoute={`/loaders/singleSaleProducts/${categoryId}`}
+            fetchMoreURL={serverUrl + `/product/sales/${categoryId}`}
             UnitEntity={ProductCard}
           />
         </div>
