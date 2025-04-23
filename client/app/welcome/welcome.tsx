@@ -21,7 +21,7 @@ export function Welcome() {
       setFeatured(fetcher.data);
       //console.log(featured);
       //HSCarousel.autoInit()
-      multiSlide?.setAttribute("data-carousel",'{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 4 } }')
+      multiSlide?.setAttribute("data-carousel",'{"slidesQty": { "xs": 1, "lg": 5 } }')
     }
   }, [fetcher.data]);
   return (
