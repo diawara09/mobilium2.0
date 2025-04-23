@@ -9,7 +9,7 @@ import SaleLink from "~/components/sale/SaleLink";
 
 
 
-export default function SalesProduct({loaderData}: Route.ComponentProps) {
+export default function SalesProduct() {
    
    
     return(

@@ -21,7 +21,7 @@ export default function InfiniteEntity({
   useEffect(() => {
     if (!fetcher.data && fetcher.state === 'idle' || loaderRoute) {
       fetcher.load(loaderRoute)
-      loaderRoute=null
+      loaderRoute = null
     }
     if (fetcher.data) setItems(fetcher.data)
     cursor ? fetchMoreData() : ''
