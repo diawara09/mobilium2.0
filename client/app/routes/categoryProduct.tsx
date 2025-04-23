@@ -50,9 +50,10 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
         if (
             prevLocation !== location
           ) {
-            const params = useParams()
-            console.log(params)
-            setCategoryId(params.id)
+            const params = location.pathname.split("/")
+            const newId = params[params.length-1]
+            console.log(newId)
+            setCategoryId(newId)
             console.log("different Page")
           } 
 
