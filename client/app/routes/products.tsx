@@ -4,6 +4,7 @@ import banner from "../banner.jpg"
 import InfiniteEntity from "~/components/InfinteEntity"
 import ProductCard from "~/components/product/ProductCard"
 import { serverUrl } from "~/utils/serverUrl"
+import CategoryLink from "~/components/category/CategoryLink"
 
 export default function Products() {
     return (
@@ -21,6 +22,9 @@ export default function Products() {
         </div>
 
         <div className="w-full">
+          <div className="flex flex-wrap">
+            <CategoryLink/>
+          </div>
           <InfiniteEntity
             loaderRoute={`/loaders/allProducts`}
             fetchMoreURL={serverUrl + `/product/`}

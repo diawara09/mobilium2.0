@@ -27,7 +27,7 @@ export default [
     
 
     /* Loader Routes
-        // category Loader*/
+    // category Loader*/
     route('loaders/primeCategories', './loaders/category/getPrimaries.tsx'),
     route('loaders/allCategories', './loaders/category/getAll.tsx'),
     /* // Sales Loaders  */
