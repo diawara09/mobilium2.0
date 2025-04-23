@@ -150,7 +150,7 @@ export function Welcome() {
           className="relative w-full"
         >
           <div className="carousel rounded-none">
-            {featured ?  <div className="carousel-body  h-full opacity-0">
+            {featured ?  <div className="carousel-body  h-full">
               {
                 featured.map((product) => (
                   <div key={product._id} className="carousel-slide">
