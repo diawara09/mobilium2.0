@@ -24,7 +24,7 @@ export default function InfiniteEntity({
     }
     if (fetcher.data) setItems(fetcher.data)
     cursor ? fetchMoreData() : ''
-  }, [cursor, fetcher.data])
+  }, [cursor, fetcher.data, loaderRoute])
 
   const fetchMoreData = async () => {
     let completeUrl = fetchMoreURL + `?cursor=${cursor || ''}&limit=${5}`
