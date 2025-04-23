@@ -9,6 +9,6 @@ export default defineConfig({
     noExternal: ['react-datepicker'],
   },
   optimizeDeps: {
-    include: ['apexcharts', 'swiper/react'],
+    include: ['apexcharts'],
   },
 });
