@@ -6,9 +6,14 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   ssr: {
-    noExternal: ['react-datepicker','swiper'],
+    noExternal: ['react-datepicker'],
   },
   optimizeDeps: {
     include: ['apexcharts'],
   },
+  build:{
+    rollupOptions: {
+      external: ['swiper']
+    }
+  }
 });
