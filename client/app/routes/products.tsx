@@ -21,8 +21,8 @@ export default function Products() {
           </div>
         </div>
 
-        <div className="w-full">
-          <div className="flex flex-wrap p-10">
+        <div className="w-full flex flex-col lg:flex-row">
+          <div className="flex flex-wrap p-10 lg:flex-1/4">
             <CategoryLink/>
           </div>
           <InfiniteEntity
