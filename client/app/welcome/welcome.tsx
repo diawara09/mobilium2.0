@@ -7,6 +7,7 @@ import { serverUrl } from "~/utils/serverUrl";
 import { Link, useFetcher } from "react-router";
 import { useEffect, useState } from "react";
 import ProductCard from "~/components/product/ProductCard";
+import  HSCarousel  from "../../node_modules/flyonui/dist/carousel";
 
 export function Welcome() {
   const fetcher = useFetcher();
@@ -19,7 +20,7 @@ export function Welcome() {
     if (fetcher.data) {
       setFeatured(fetcher.data);
       console.log(featured);
-      window.HSStaticMethods.autoInit(["carousel", "dropdown"])
+       HSCarousel.autoInit()
       
     }
   }, [fetcher.data]);
