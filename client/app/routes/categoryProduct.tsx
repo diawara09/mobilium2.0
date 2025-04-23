@@ -44,7 +44,7 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
     const {id} = useParams()
     const location = useLocation()
     const [categoryId, setCategoryId] = useState(id)
-    let paramsChanged = false
+    let paramsChanged
     const prevLocation = usePrevLocation(location)
 
     useEffect(() => {
@@ -55,7 +55,7 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
             const newId = params[params.length-1]
             console.log(newId)
             setCategoryId(newId)
-            paramsChanged = true
+            paramsChanged = prevLocation !== location
             console.log("different Page")
           } 
 

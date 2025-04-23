@@ -21,7 +21,7 @@ export default function InfiniteEntity({
   const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
-    if ((!fetcher.data && fetcher.state === 'idle') || paramsChanged) {
+    if ((!fetcher.data && fetcher.state === 'idle') || paramsChanged ===true) {
       fetcher.load(loaderRoute)
     }
     if (fetcher.data) setItems(fetcher.data)
