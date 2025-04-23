@@ -12,7 +12,7 @@ export async function clientLoader(){
 
         })
         const response = await req.json()
-        console.log(response);
+        //console.log(response);
         return response
         
     } catch (error) {
