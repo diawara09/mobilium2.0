@@ -44,6 +44,7 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
     const {id} = useParams()
     const location = useLocation()
     const [categoryId, setCategoryId] = useState(id)
+    let paramsChanged = false
     const prevLocation = usePrevLocation(location)
 
     useEffect(() => {
@@ -54,6 +55,7 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
             const newId = params[params.length-1]
             console.log(newId)
             setCategoryId(newId)
+            paramsChanged = true
             console.log("different Page")
           } 
 
@@ -79,6 +81,7 @@ export default function categoryProduct({loaderData}: Route.ComponentProps) {
             <CategoryLink/>
           </div>
           <InfiniteEntity
+            paramsChanged={paramsChanged}
             loaderRoute={`/loaders/categoryProducts/${categoryId}`}
             fetchMoreURL={serverUrl + `/product/${categoryId}`}
             UnitEntity={ProductCard}

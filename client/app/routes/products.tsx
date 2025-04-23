@@ -26,6 +26,7 @@ export default function Products() {
             <CategoryLink/>
           </div>
           <InfiniteEntity
+           paramsChanged={false}
             loaderRoute={`/loaders/allProducts`}
             fetchMoreURL={serverUrl + `/product/`}
             UnitEntity={ProductCard}
