@@ -21,7 +21,7 @@ export function Welcome() {
       setFeatured(fetcher.data);
       //console.log(featured);
       //HSCarousel.autoInit()
-      multiSlide?.setAttribute("data-carousel",'{"slidesQty": { "xs": 1, "lg": 5 } }')
+      //multiSlide?.setAttribute("data-carousel",'{"slidesQty": { "xs": 1, "lg": 5 } }')
     }
   }, [fetcher.data]);
   return (
@@ -137,7 +137,7 @@ export function Welcome() {
         </div>
       </div>
 
-      <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
+      {featured && featured.length>1 ? <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
         <div className="flex flex-col w-full gap-5 justify-center items-center">
           <span className="text-2xl lg:text-3xl font-bold">
             Featured Products
@@ -151,7 +151,7 @@ export function Welcome() {
           data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 4 } }'
         >
           <div className="carousel rounded-none">
-             <div className="carousel-body w-full  h-full opacity-0" style={featured?{width:"100%"}:{} }>
+             <div className="carousel-body w-full  h-full opacity-0">
               {
                 featured.map((product) => (
                   <div key={product._id} className="carousel-slide">
@@ -176,7 +176,9 @@ export function Welcome() {
           </button>
         </div>
       </div>
+ : ""}
 
+      
       <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
         <div
           id="indicators"
