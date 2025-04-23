@@ -17,7 +17,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import { Pagination, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 
 //import { HSCarousel } from "flyonui/flyonui";
 export function Welcome() {
@@ -149,47 +149,49 @@ export function Welcome() {
         </div>
       </div>
 
-      <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
-        <div className="flex flex-col w-full gap-5 justify-center items-center">
-          <span className="text-2xl lg:text-3xl font-bold">
-            Featured Products
-          </span>
-          <hr className="h-2.5 text-primary bg-primary max-w-24 lg:max-w-52" />
+      
+        <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
+          <div className="flex flex-col w-full gap-5 justify-center items-center">
+            <span className="text-2xl lg:text-3xl font-bold">
+              Featured Products
+            </span>
+            <hr className="h-2.5 text-primary bg-primary max-w-24 lg:max-w-52" />
+          </div>
+
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={10}
+            pagination={{
+              clickable: true,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+              },
+            }}
+            navigation={true}
+            modules={[Navigation]}
+            className="max-w-full"
+          >
+            {featured.map((product) => (
+              <SwiperSlide key={product._id}>
+                <ProductCard item={product} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+         
         </div>
-
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={10}
-          pagination={{
-            clickable: true,
-          }}
-          breakpoints={{
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 5,
-              spaceBetween: 50,
-            },
-          }}
-          navigation={true}
-          modules={[Pagination,Navigation]}
-          className="mySwiper"
-        >
-          {featured.map((product) => (
-            <SwiperSlide key={product._id}>
-              <ProductCard item={product} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-       
-      </div>
+     
 
       <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
         <div
