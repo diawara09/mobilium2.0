@@ -1,14 +1,9 @@
 // global.d.ts
-import { IStaticMethods } from 'flyonui/flyonui'
+import { HSCarousel, IStaticMethods } from 'flyonui/flyonui'
 
 declare global {
   interface Window {
-    // Optional third-party libraries
-    _
-    $: typeof import('jquery')
-    jQuery: typeof import('jquery')
-    DataTable
-    Dropzone
+    HSCarouse: typeof HSCarousel
 
     HSStaticMethods: IStaticMethods
   }
