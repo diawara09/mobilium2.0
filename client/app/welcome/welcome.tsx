@@ -151,14 +151,14 @@ export function Welcome() {
           data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 4 } }'
         >
           <div className="carousel rounded-none">
-            {featured ?  <div className="carousel-body  h-full opacity-0">
+             <div className="carousel-body  h-full opacity-0">
               {
                 featured.map((product) => (
                   <div key={product._id} className="carousel-slide">
                     <ProductCard item={product} />
                   </div>
                 ))}
-            </div>: ""}
+            </div>
           </div>
 
           <button type="button" className="carousel-prev">
