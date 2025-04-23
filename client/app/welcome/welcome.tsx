@@ -11,6 +11,7 @@ import ProductCard from "~/components/product/ProductCard";
 export function Welcome() {
   const fetcher = useFetcher();
   const [featured, setFeatured] = useState([]);
+  let featuredElements = []
   const multiSlide = document.querySelector("#multi-slide")
   useEffect(() => {
     if (fetcher.state === "idle" && !fetcher.data) {
@@ -20,6 +21,11 @@ export function Welcome() {
       setFeatured(fetcher.data);
       //console.log(featured);
       //HSCarousel.autoInit()
+      featuredElements = featured.map((product) => (
+        <div key={product._id} className="carousel-slide">
+          <ProductCard item={product}/>
+        </div>
+      ))
       
     }
   }, [fetcher.data]);
@@ -151,9 +157,7 @@ export function Welcome() {
         >
           <div className="carousel rounded-none">
             <div className="carousel-body  h-full opacity-0">
-              {featured && featured.map((product) => (
-                      <ProductCard key={product._id} item={product}/>
-                  ))}
+              {...featuredElements}
                 
 
               
