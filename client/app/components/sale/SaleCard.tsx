@@ -22,7 +22,7 @@ export default function SaleCard({ item }) {
             <span className="text-2xl">Expired</span>
           </Countdown>{" "}
         </p>
-        <Link to="#" className="text-sm text-primary flex items-center">
+        <Link to={`/singleSaleProducts/${item._id}`} className="text-sm text-primary flex items-center">
           Aller
           <span className="icon-[tabler--arrow-right] size-4"></span>
         </Link>
