@@ -7,35 +7,14 @@ import { serverUrl } from "~/utils/serverUrl";
 import { Link, useFetcher } from "react-router";
 import { useEffect, useState } from "react";
 import ProductCard from "~/components/product/ProductCard";
+import SingleFeatured from "~/components/product/SingleFeatured";
+import FeaturedCarousel from "~/components/product/FeaturedCarousel";
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-// import required modules
-import { Navigation } from "swiper/modules";
 
 //import { HSCarousel } from "flyonui/flyonui";
 export function Welcome() {
-  const fetcher = useFetcher();
-  const [featured, setFeatured] = useState([]);
-
-  const multiSlide = document.querySelector("#multi-slide");
-  useEffect(() => {
-    if (fetcher.state === "idle" && !fetcher.data) {
-      fetcher.load("/loaders/last10");
-    }
-    if (fetcher.data) {
-      setFeatured(fetcher.data);
-      //console.log(featured);
-      //HSCarousel.autoInit()
-      //multiSlide?.setAttribute("data-carousel",'{"slidesQty": { "xs": 1, "lg": 5 } }')
-    }
-  }, [fetcher.data]);
+  
   return (
     <>
       <div
@@ -103,40 +82,7 @@ export function Welcome() {
       </div>
 
       <div className="flex justify-center  gap-8 items-stretch flex-wrap m-5 p-5 lg:m-10 lg:p-10">
-        <div className="flex bg-white flex-col hover:shadow-md rounded-none min-w-sm lg:min-w-md p-5">
-          {featured && featured.length >= 1 ? (
-            <>
-              <div className="flex flex-row justify-between w-full">
-                <div className="badge badge-primary">New</div>
-                <span className="text-lg">
-                  {" "}
-                  {featured[0].price.$numberDecimal} FCFA
-                </span>
-              </div>
-              <div className="flex w-full justify-center p-2">
-                <img
-                  src={serverUrl + "/" + featured[0].images.split(";")[0]}
-                  className="w-3/6"
-                />
-              </div>
-
-              <div className="flex flex-row justify-between w-full">
-                <div className="flex flex-col">
-                  <h6 className="font-bold"> {featured[0].name} </h6>
-                  <p className="text-sm"> {featured[0].category.name} </p>
-                </div>
-                <Link
-                  to={`/singleProduct/${featured[0]._id}`}
-                  className="btn border-2 border-gray-400 bg-gray-300 text-gray-500"
-                >
-                  <span className="icon-[tabler--eye] size-6"></span>
-                </Link>
-              </div>
-            </>
-          ) : (
-            ""
-          )}
-        </div>
+        <SingleFeatured/>
 
         <div className="flex bg-white justify-center items-center  hover:shadow-md rounded-none min-w-sm lg:min-w-lg p-5">
           <img src={newProduct} className="w-1/2" />
@@ -150,56 +96,7 @@ export function Welcome() {
       </div>
 
       
-        <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
-          <div className="flex flex-col w-full gap-5 justify-center items-center">
-            <span className="text-2xl lg:text-3xl font-bold">
-              Featured Products
-            </span>
-            <hr className="h-2.5 text-primary bg-primary max-w-24 lg:max-w-52" />
-          </div>
-
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={10}
-            pagination={{
-              clickable: true,
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 5,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 10,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-            }}
-            navigation={{
-              prevEl:  `#prev`,
-              nextEl:  `#next`
-            }}
-            modules={[Navigation]}
-            className="relative max-w-full"
-          >
-            {featured.map((product) => (
-              <SwiperSlide key={product._id}>
-                <ProductCard item={product} />
-              </SwiperSlide>
-            ))}
-            <span id="prev" className="size-9.5 absolute z-1 left-0 top-[40%] bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
-              <span className="icon-[tabler--chevron-left] size-5 cursor-pointer rtl:rotate-180"></span>
-            </span>
-            <span id="next" className="size-9.5 absolute z-1 right-0 top-[40%] bg-base-100 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm">
-              <span className="icon-[tabler--chevron-right] size-5 cursor-pointer rtl:rotate-180"></span>
-            </span>
-          </Swiper>
-
-         
-        </div>
+        <FeaturedCarousel/>
      
 
       <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
