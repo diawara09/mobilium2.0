@@ -9,12 +9,10 @@ import { useEffect, useState } from "react";
 import ProductCard from "~/components/product/ProductCard";
 import SingleFeatured from "~/components/product/SingleFeatured";
 import FeaturedCarousel from "~/components/product/FeaturedCarousel";
-
-
+import SaleCarousel from "~/components/sale/SaleCarousel";
 
 //import { HSCarousel } from "flyonui/flyonui";
 export function Welcome() {
-  
   return (
     <>
       <div
@@ -82,7 +80,7 @@ export function Welcome() {
       </div>
 
       <div className="flex justify-center  gap-8 items-stretch flex-wrap m-5 p-5 lg:m-10 lg:p-10">
-        <SingleFeatured/>
+        <SingleFeatured />
 
         <div className="flex bg-white justify-center items-center  hover:shadow-md rounded-none min-w-sm lg:min-w-lg p-5">
           <img src={newProduct} className="w-1/2" />
@@ -95,82 +93,9 @@ export function Welcome() {
         </div>
       </div>
 
-      
-        <FeaturedCarousel/>
-     
+      <FeaturedCarousel />
 
-      <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
-        <div
-          id="indicators"
-          data-carousel='{ "loadingClasses": "opacity-0", "dotsItemClasses": "carousel-dot carousel-active:bg-primary" }'
-          className="relative w-full"
-        >
-          <div className="carousel rounded-none">
-            <div className="carousel-body h-full opacity-0">
-              <div className="carousel-slide">
-                <div className="bg-white flex flex-wrap  h-full justify-evenly p-6">
-                  <img src={newProduct} className="min-w-sm lg:min-w-lg" />
-                  <div className="min-w-60 lg:min-w-lg flex flex-col m-3 lg:justify-center items-start">
-                    <span className="text-4xl lg:text-6xl  text-primary font-extrabold">
-                      Discount 60%
-                    </span>
-                    <p className="max-w-96 my-4">
-                      {" "}
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Corporis, ipsum? Recusandae nulla nisi illum placeat.{" "}
-                    </p>
-                    <Link to="#" className="text-sm text-primary">
-                      Get discount
-                      <span className="icon-[tabler--arrow-right] size-4"></span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              <div className="carousel-slide">
-                <div className="bg-white flex flex-wrap  h-full justify-evenly p-6">
-                  <img src={newProduct} className="min-w-sm lg:min-w-lg" />
-                  <div className="min-w-sm lg:min-w-lg flex flex-col m-3 lg:justify-center items-start">
-                    <span className="text-4xl lg:text-6xl  text-primary font-extrabold">
-                      Discount 15%
-                    </span>
-                    <p className="max-w-96 my-4">
-                      {" "}
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Corporis, ipsum? Recusandae nulla nisi illum placeat.{" "}
-                    </p>
-                    <Link to="#" className="text-sm text-primary">
-                      Get discount
-                      <span className="icon-[tabler--arrow-right] size-4"></span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              <div className="carousel-slide">
-                <div className="bg-white flex flex-wrap  h-full justify-evenly p-6">
-                  <img src={newProduct} className="min-w-sm lg:min-w-lg" />
-                  <div className="min-w-sm lg:min-w-lg flex flex-col m-3 lg:justify-center items-start">
-                    <span className="text-4xl lg:text-6xl  text-primary font-extrabold">
-                      Discount 10%
-                    </span>
-                    <p className="max-w-96 my-4">
-                      {" "}
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Corporis, ipsum? Recusandae nulla nisi illum placeat.{" "}
-                    </p>
-                    <Link to="#" className="text-sm text-primary">
-                      Get discount
-                      <span className="icon-[tabler--arrow-right] size-4"></span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-pagination absolute bottom-3 end-10 start-0 flex justify-end gap-3"></div>
-        </div>
-      </div>
+     <SaleCarousel/>
     </>
   );
 }
