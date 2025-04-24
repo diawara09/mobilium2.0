@@ -5,8 +5,8 @@ import Footer from '~/components/Footer'
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: 'New React Router App' },
-    { name: 'description', content: 'Welcome to React Router!' },
+    { title: 'Mobilium' },
+    { name: 'description', content: 'Bienvenu sur Mobilium!' },
   ]
 }
 
