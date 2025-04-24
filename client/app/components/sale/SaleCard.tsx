@@ -14,7 +14,7 @@ export default function SaleCard({ item }) {
       />
       <div className="min-w-60 lg:min-w-lg flex flex-col m-3 lg:justify-center items-start">
         <span className="text-4xl lg:text-6xl  text-primary font-extrabold">
-          {item.name} {item.discount_rate.$numberDecimal}
+          {item.name} {item.discount_rate.$numberDecimal}%
         </span>
         <p className="max-w-96 my-4">
           {" "}
