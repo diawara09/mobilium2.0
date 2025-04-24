@@ -18,7 +18,7 @@ export default function SaleCarousel(){
         if(!fetcher.data && fetcher.state === "idle"){
             fetcher.load("/loaders/clientSales")
         }
-    })
+    },[fetcher.data])
 
     return (
         <div className="flex  gap-8 items-center justify-center flex-col m-5 p-5 lg:m-10 lg:p-10">
@@ -33,11 +33,11 @@ export default function SaleCarousel(){
                       modules={[Navigation,Pagination]}
                       className="relative max-w-full"
                     >
-                      {fetcher.data.map((sale) => (
+                      {fetcher.data ? fetcher.data.map((sale) => (
                         <SwiperSlide key={sale._id}>
                           <SaleCard item={sale} />
                         </SwiperSlide>
-                      ))}
+                      )) :""}
                      
                     </Swiper>
             
