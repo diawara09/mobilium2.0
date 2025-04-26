@@ -23,11 +23,15 @@ export default [
     route("deleteCartItem/:id", "./routes/cart/deleteItem.tsx"),
     route("addAddress","./routes/cart/addAddress.tsx"),
 
-    // checkout route
+    // checkout routes
     route("checkout/:address", "./routes/checkout.tsx", [
       index("./routes/checkoutForm.tsx"),
       route("complete", "./routes/completePage.tsx")
     ]),
+    route("cashCheckout/:address", "./routes/cashCheckout.tsx"),
+    route("cashCheckoutSucceeded", "./routes/cashCheckoutSucceed.tsx"),
+    route("cashCheckoutFailed", "./routes/cashCheckoutFailed.tsx"),
+
     
 
     /* Loader Routes

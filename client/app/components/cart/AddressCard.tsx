@@ -1,7 +1,8 @@
 import type React from "react";
-import { Link } from "react-router";
+import { Form, Link, useNavigation } from "react-router";
 
 export default function AddressCard({item}){
+  const navigation = useNavigation()
     return(<div className="card sm:max-w-sm">
         <div className="card-header">
           <h5 className="card-title">   <span className="icon-[tabler--map-pin] size-5"></span> {item.name}{' '}</h5>
@@ -25,12 +26,15 @@ export default function AddressCard({item}){
         </div>
         <div className="card-footer text-center">
         <div className="card-actions justify-end">
-                      <Link
-                        to={`/checkout/${item._id}`}
-                        className="btn btn-outline btn-primary"
+                      <Form
+                        action={`/cashCheckout/${item._id}`}
+                        method="post"
+
                       >
-                        Choisir
-                      </Link>
+                       <button className="btn btn-outline btn-primary">
+                        {navigation.state !== "idle" ? <span className="loading loading-ball"></span> : "choisir"}
+                        </button> 
+                      </Form>
                     </div>
         </div>
       </div>)
