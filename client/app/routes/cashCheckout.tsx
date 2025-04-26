@@ -12,6 +12,7 @@ export async function clientAction({request,params}:Route.ClientActionArgs){
             body: JSON.stringify({}),
         })
         const response = await req.json()
+        console.log(response);
         if(response.msg) return redirect("/cashCheckoutSucceeded")
         return redirect("/cashCheckoutFailed")
         
