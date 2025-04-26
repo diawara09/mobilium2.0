@@ -12,7 +12,7 @@ const stripePromise = loadStripe(
 export default function Checkout(){
     const { address } = useParams()
   //console.log(address)
-  const cart = useLoaderData()
+  //const cart = useLoaderData()
   //console.log(cart)
   //const navigate = useNavigate()
 
